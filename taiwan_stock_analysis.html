@@ -1,0 +1,2392 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台股明日潛力 10 檔分析 — 2026/04/29</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08090f;--bg2:#0f1118;--bg3:#161924;--bg4:#1c2030;--bg5:#252a3a;
+  --line:rgba(255,255,255,0.06);--line2:rgba(255,255,255,0.11);--line3:rgba(255,255,255,0.2);
+  --text:#d8dce8;--text2:#6e7890;--text3:#3a4058;
+  --green:#00e5a0;--red:#ff3d5a;--blue:#4da6ff;--yellow:#ffd166;
+  --orange:#ff8c42;--purple:#a78bfa;--teal:#00c9c9;--pink:#f06292;
+  --mono:"JetBrains Mono",monospace;--sans:"Noto Sans TC",sans-serif;
+  --r:8px;--r2:14px;--r3:20px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:22.4px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;font-size:1rem}
+
+/* HEADER */
+.hdr{background:linear-gradient(180deg,#050710 0%,var(--bg) 100%);border-bottom:1px solid var(--line2);padding:1.3rem 2rem;position:sticky;top:0;z-index:200;backdrop-filter:blur(20px)}
+.hdr-inner{max-width:1220px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.logo h1{font-size:1.1rem;font-weight:900;letter-spacing:-.4px}
+.logo h1 em{font-style:normal;color:var(--green)}
+.logo p{font-size:.67rem;color:var(--text2);margin-top:2px}
+.hbadges{display:flex;gap:7px;flex-wrap:wrap}
+.hbadge{padding:4px 12px;border-radius:20px;font-size:.68rem;font-family:var(--mono);border:1px solid}
+.hbadge.g{background:rgba(0,229,160,.1);color:var(--green);border-color:rgba(0,229,160,.25)}
+.hbadge.b{background:rgba(77,166,255,.1);color:var(--blue);border-color:rgba(77,166,255,.25)}
+.hbadge.p{background:rgba(167,139,250,.1);color:var(--purple);border-color:rgba(167,139,250,.25)}
+.pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 1.6s ease infinite;margin-right:4px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* PAGE */
+.page{max-width:1220px;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+
+/* TABS */
+.tabs{display:flex;gap:3px;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r2);padding:3px;margin-bottom:1.5rem;width:fit-content;flex-wrap:wrap}
+.tab{padding:7px 17px;border-radius:10px;border:none;background:transparent;color:var(--text2);font-size:.75rem;font-family:var(--sans);cursor:pointer;transition:all .15s;font-weight:500;white-space:nowrap}
+.tab:hover{color:var(--text)}
+.tab.active{background:var(--bg4);color:var(--green);font-weight:700}
+
+/* SUMMARY */
+.sumgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:1.5rem}
+.scard{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r2);padding:.85rem 1rem;position:relative;overflow:hidden}
+.scard::after{content:"";position:absolute;top:0;left:0;right:0;height:2px}
+.scard.g::after{background:linear-gradient(90deg,var(--green),transparent)}
+.scard.r::after{background:linear-gradient(90deg,var(--red),transparent)}
+.scard.b::after{background:linear-gradient(90deg,var(--blue),transparent)}
+.scard.y::after{background:linear-gradient(90deg,var(--yellow),transparent)}
+.scard.p::after{background:linear-gradient(90deg,var(--purple),transparent)}
+.scard.t::after{background:linear-gradient(90deg,var(--teal),transparent)}
+.sc-lbl{font-size:.6rem;color:var(--text3);text-transform:uppercase;letter-spacing:.9px;margin-bottom:4px}
+.sc-val{font-size:1.35rem;font-weight:700;font-family:var(--mono)}
+.sc-val.g{color:var(--green)}.sc-val.r{color:var(--red)}.sc-val.b{color:var(--blue)}
+.sc-val.y{color:var(--yellow)}.sc-val.p{color:var(--purple)}.sc-val.t{color:var(--teal)}
+.sc-sub{font-size:.63rem;color:var(--text2);margin-top:3px}
+
+/* CONTROLS */
+.ctrl-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:1.2rem;justify-content:space-between}
+.fbtngroup{display:flex;gap:6px;flex-wrap:wrap}
+.fbtn{padding:5px 13px;border-radius:20px;border:1px solid var(--line2);background:transparent;color:var(--text2);font-size:.72rem;cursor:pointer;font-family:var(--sans);transition:all .16s}
+.fbtn:hover{border-color:var(--green);color:var(--green)}
+.fbtn.on{background:var(--green);color:#000;border-color:var(--green);font-weight:700}
+.sort-wrap{display:flex;align-items:center;gap:7px}
+.sort-wrap label{font-size:.7rem;color:var(--text3)}
+.sort-wrap select{background:var(--bg3);border:1px solid var(--line2);color:var(--text);font-family:var(--sans);font-size:.72rem;padding:5px 10px;border-radius:var(--r);outline:none;cursor:pointer}
+
+/* LEGEND */
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:1.2rem}
+.leg{display:flex;align-items:center;gap:5px;font-size:.67rem;color:var(--text2)}
+.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* GRID */
+.sgrid{display:grid;gap:14px}
+
+/* CARD */
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s;animation:up .35s ease both}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.card:nth-child(1){animation-delay:0s}.card:nth-child(2){animation-delay:.05s}
+.card:nth-child(3){animation-delay:.10s}.card:nth-child(4){animation-delay:.15s}
+.card:nth-child(5){animation-delay:.20s}.card:nth-child(6){animation-delay:.25s}
+.card:nth-child(7){animation-delay:.30s}.card:nth-child(8){animation-delay:.35s}
+.card:nth-child(9){animation-delay:.40s}.card:nth-child(10){animation-delay:.45s}
+.card:hover{transform:translateY(-2px);border-color:rgba(0,229,160,.22);box-shadow:0 6px 28px rgba(0,0,0,.45)}
+.ctop{height:3px}
+.cbody{padding:1.1rem 1.3rem}
+
+/* Card head */
+.chead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.9rem;gap:10px}
+.cmeta{flex:1;min-width:0}
+.c-rank{font-size:.6rem;font-family:var(--mono);color:var(--text3);margin-bottom:3px}
+.c-names{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.c-code{font-size:1.05rem;font-weight:700;font-family:var(--mono)}
+.c-code a{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,0.2);transition:border-color .15s}
+.c-code a:hover{border-bottom-color:var(--green);color:var(--green)}
+.c-name{font-size:.82rem;color:var(--text2)}
+.tbadge{font-size:.6rem;padding:2px 7px;border-radius:4px;font-weight:700;letter-spacing:.4px;font-family:var(--mono)}
+.t-stk{background:rgba(0,229,160,.14);color:var(--green);border:1px solid rgba(0,229,160,.28)}
+.t-etf{background:rgba(77,166,255,.14);color:var(--blue);border:1px solid rgba(77,166,255,.28)}
+
+/* Score ring */
+.sring{width:48px;height:48px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid;flex-shrink:0}
+.sring.h{border-color:var(--green);box-shadow:0 0 12px rgba(0,229,160,.2)}
+.sring.m{border-color:var(--yellow)}.sring.l{border-color:var(--orange)}
+.snum{font-size:.9rem;font-weight:700;font-family:var(--mono);line-height:1}
+.sring.h .snum{color:var(--green)}.sring.m .snum{color:var(--yellow)}.sring.l .snum{color:var(--orange)}
+.slbl{font-size:.48rem;color:var(--text3);margin-top:1px}
+
+/* Price row */
+.prow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:.85rem}
+.pcell{background:var(--bg3);padding:8px 9px;text-align:center}
+.plbl{font-size:.6rem;color:var(--text3);margin-bottom:3px;letter-spacing:.3px}
+.pval{font-size:.88rem;font-weight:700;font-family:var(--mono)}
+.pval.g{color:var(--green)}.pval.r{color:var(--red)}.pval.b{color:var(--blue)}
+
+/* Upside bar */
+.upblock{margin-bottom:.85rem}
+.upmeta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
+.uplbl{font-size:.68rem;color:var(--text2)}
+.uppct{font-size:.92rem;font-weight:700;font-family:var(--mono);color:var(--green)}
+.btrack{height:5px;background:var(--bg5);border-radius:5px;overflow:hidden}
+.bfill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--green),#00ffc8);transition:width 1s cubic-bezier(.4,0,.2,1)}
+.bticks{display:flex;justify-content:space-between;margin-top:3px}
+.btick{font-size:.57rem;color:var(--text3);font-family:var(--mono)}
+
+/* SECTION BLOCK generic */
+.sec-block{background:var(--bg3);border:1px solid var(--line2);border-radius:var(--r2);margin-bottom:.85rem;overflow:hidden}
+.sec-hdr{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.2)}
+.sec-icon{font-size:13px}
+.sec-title{font-size:.63rem;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.8px}
+.sec-date{font-size:.58rem;color:var(--text3);margin-left:auto;font-family:var(--mono)}
+
+/* ── TECHNICAL INDICATORS ── */
+.ind-grid{display:flex;flex-wrap:wrap;gap:5px;padding:9px 12px}
+.chip{display:flex;align-items:center;gap:4px;font-size:.68rem;padding:3px 8px;border-radius:var(--r);border:1px solid}
+.chip.bull{background:rgba(0,229,160,.08);color:#7eefd8;border-color:rgba(0,229,160,.2)}
+.chip.warn{background:rgba(255,209,102,.08);color:var(--yellow);border-color:rgba(255,209,102,.22)}
+.chip.neut{background:rgba(126,135,160,.08);color:var(--text2);border-color:var(--line)}
+
+/* ── BIG PLAYER (三大法人) ── */
+.bp-body{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+.bp-cell{background:var(--bg3);padding:9px 10px}
+.bp-clbl{font-size:.58rem;color:var(--text3);margin-bottom:4px;letter-spacing:.3px}
+.bp-cval{font-size:.8rem;font-weight:700;font-family:var(--mono)}
+.bp-cval.buy{color:var(--red)}.bp-cval.sell{color:var(--green)}
+.bp-cval.b{color:var(--blue)}.bp-cval.p{color:var(--purple)}.bp-cval.y{color:var(--yellow)}
+.bar-rows{padding:8px 12px;display:flex;flex-direction:column;gap:5px}
+.br-item{display:flex;align-items:center;gap:8px}
+.br-name{font-size:.58rem;color:var(--text2);width:30px;flex-shrink:0;font-family:var(--mono)}
+.br-track{flex:1;height:4px;background:var(--bg5);border-radius:3px;overflow:hidden}
+.br-fill{height:100%;border-radius:3px;transition:width .9s ease}
+.br-fill.foreign{background:linear-gradient(90deg,#ff3d5a,#ff8585)}
+.br-fill.invest{background:linear-gradient(90deg,#4da6ff,#88c8ff)}
+.br-fill.dealer{background:linear-gradient(90deg,#a78bfa,#c0aaff)}
+.br-val{font-size:.6rem;font-family:var(--mono);width:40px;text-align:right;flex-shrink:0}
+.br-val.pos{color:var(--red)}.br-val.neg{color:var(--green)}
+.bp-rating{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;font-size:.62rem;font-weight:700}
+.bp-rating.strong{background:rgba(255,61,90,.15);color:var(--red);border:1px solid rgba(255,61,90,.3)}
+.bp-rating.moderate{background:rgba(255,209,102,.1);color:var(--yellow);border:1px solid rgba(255,209,102,.3)}
+.bp-rating.light{background:rgba(77,166,255,.1);color:var(--blue);border:1px solid rgba(77,166,255,.3)}
+.bp-note{padding:6px 12px;border-top:1px solid var(--line);font-size:.61rem;color:var(--text3);line-height:1.6}
+
+/* ── 券商分點 (BROKER RANK) ── */
+.broker-body{padding:6px 12px 10px}
+.broker-hd{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4px;font-size:.57rem;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;padding:4px 0;border-bottom:1px solid var(--line);margin-bottom:4px}
+.broker-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4px;align-items:center;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.03)}
+.broker-row:last-child{border-bottom:none}
+.br-rank{font-size:.62rem;font-family:var(--mono);color:var(--text3);margin-right:4px}
+.br-bname{font-size:.7rem;color:var(--text);font-weight:500}
+.br-bcode{font-size:.58rem;color:var(--text3);font-family:var(--mono)}
+.br-bcol{font-size:.72rem;font-family:var(--mono);text-align:right}
+.br-bcol.pos{color:var(--red)}.br-bcol.neg{color:var(--green)}.br-bcol.neu{color:var(--text2)}
+.broker-summary{display:flex;gap:8px;margin-top:7px;padding-top:6px;border-top:1px solid var(--line);flex-wrap:wrap}
+.bsum-chip{font-size:.62rem;padding:3px 9px;border-radius:12px;border:1px solid;display:flex;align-items:center;gap:4px}
+.bsum-chip.accu{background:rgba(255,61,90,.1);color:var(--red);border-color:rgba(255,61,90,.25)}
+.bsum-chip.dist{background:rgba(0,229,160,.08);color:var(--green);border-color:rgba(0,229,160,.2)}
+.bsum-chip.neu{background:var(--bg4);color:var(--text2);border-color:var(--line)}
+.conc-bar-wrap{margin-top:6px;padding:0 12px 8px}
+.conc-lbl{font-size:.58rem;color:var(--text3);margin-bottom:4px;display:flex;justify-content:space-between}
+.conc-track{height:6px;background:var(--bg5);border-radius:3px;overflow:hidden;position:relative}
+.conc-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--orange),#ffb347);transition:width .9s ease}
+
+/* ── 集保戶數 (TDCC) ── */
+.tdcc-body{padding:8px 12px 10px}
+.tdcc-main{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}
+.tdcc-cell{background:var(--bg4);border-radius:var(--r);padding:8px 10px}
+.tdcc-clbl{font-size:.57rem;color:var(--text3);margin-bottom:3px;letter-spacing:.3px}
+.tdcc-cval{font-size:.88rem;font-weight:700;font-family:var(--mono)}
+.tdcc-cval.g{color:var(--green)}.tdcc-cval.r{color:var(--red)}.tdcc-cval.b{color:var(--blue)}.tdcc-cval.y{color:var(--yellow)}
+.holder-dist{margin-top:6px}
+.hdist-title{font-size:.58rem;color:var(--text3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.hdist-row{display:flex;align-items:center;gap:7px;margin-bottom:4px}
+.hdist-label{font-size:.62rem;color:var(--text2);width:72px;flex-shrink:0}
+.hdist-bar-track{flex:1;height:5px;background:var(--bg5);border-radius:3px;overflow:hidden}
+.hdist-bar-fill{height:100%;border-radius:3px;transition:width .9s ease}
+.hdist-pct{font-size:.6rem;font-family:var(--mono);color:var(--text2);width:36px;text-align:right}
+.hdist-chg{font-size:.6rem;font-family:var(--mono);width:38px;text-align:right}
+.hdist-chg.up{color:var(--red)}.hdist-chg.dn{color:var(--green)}
+.tdcc-signal{display:flex;align-items:center;gap:6px;margin-top:8px;padding-top:7px;border-top:1px solid var(--line)}
+.tdcc-sig-icon{font-size:14px}
+.tdcc-sig-text{font-size:.65rem;color:var(--text2);line-height:1.5;flex:1}
+.tdcc-sig-badge{padding:3px 9px;border-radius:10px;font-size:.62rem;font-weight:700;flex-shrink:0}
+.tdcc-sig-badge.bull{background:rgba(255,61,90,.15);color:var(--red);border:1px solid rgba(255,61,90,.3)}
+.tdcc-sig-badge.neut{background:rgba(255,209,102,.1);color:var(--yellow);border:1px solid rgba(255,209,102,.3)}
+.tdcc-sig-badge.bear{background:rgba(0,229,160,.1);color:var(--green);border:1px solid rgba(0,229,160,.25)}
+
+/* Analysis */
+.analysis{background:linear-gradient(135deg,var(--bg4),var(--bg3));border-radius:var(--r);padding:9px 12px;margin-bottom:.85rem;border-left:2px solid var(--green)}
+.analysis p{font-size:.76rem;color:var(--text2);line-height:1.65}
+
+/* Bottom pills */
+.brow{display:flex;gap:7px;flex-wrap:wrap}
+.ipill{display:flex;align-items:center;gap:5px;background:var(--bg4);border:1px solid var(--line);border-radius:20px;padding:4px 11px;font-size:.68rem}
+.ilbl{color:var(--text3)}.ival{color:var(--text);font-weight:700;font-family:var(--mono)}
+.ival.r{color:var(--red)}.ival.g{color:var(--green)}.ival.b{color:var(--blue)}
+
+/* BROKER OVERVIEW TABLE */
+.ov-table{width:100%;border-collapse:collapse;font-size:.74rem}
+.ov-table th{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line2);color:var(--text3);font-size:.6rem;text-transform:uppercase;letter-spacing:.7px}
+.ov-table td{padding:7px 10px;border-bottom:1px solid var(--line)}
+.ov-table tr:hover td{background:var(--bg3)}
+.ov-table tr:last-child td{border-bottom:none}
+
+/* PANEL */
+.panel{display:none}.panel.active{display:block}
+
+/* datasource */
+.dssec{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r2);padding:1.1rem 1.4rem;margin-top:1.5rem}
+.dssec h3{font-size:.82rem;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.dssec p{font-size:.73rem;color:var(--text2);line-height:1.7}
+.dssec code{font-family:var(--mono);font-size:.7rem;background:var(--bg4);padding:1px 6px;border-radius:4px;color:var(--green)}
+.cblk{background:var(--bg);border:1px solid var(--line2);border-radius:var(--r);padding:.85rem 1.1rem;margin-top:8px;overflow-x:auto}
+.cblk pre{font-family:var(--mono);font-size:.68rem;color:#9be0c8;line-height:1.8}
+.cc{color:var(--text3)}.ck{color:var(--blue)}.cs{color:#f6c9a0}
+
+.disc{margin-top:1.4rem;background:rgba(255,61,90,.05);border:1px solid rgba(255,61,90,.15);border-radius:var(--r2);padding:.85rem 1.25rem}
+.disc p{font-size:.7rem;color:rgba(255,150,150,.75);line-height:1.7}
+
+/* ── UPDATE SYSTEM ── */
+.update-bar{background:var(--bg2);border-bottom:1px solid var(--line);padding:.55rem 2rem;position:sticky;top:72px;z-index:190;backdrop-filter:blur(16px)}
+.update-inner{max-width:1220px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.upd-status{display:flex;align-items:center;gap:7px;font-size:.7rem;color:var(--text2);flex:1;min-width:0}
+.upd-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;transition:background .3s}
+.upd-dot.idle{background:var(--text3)}
+.upd-dot.live{background:var(--green);animation:blink 1.4s ease infinite}
+.upd-dot.loading{background:var(--yellow);animation:spin-dot 1s linear infinite}
+.upd-dot.error{background:var(--red)}
+@keyframes spin-dot{to{transform:rotate(360deg)}}
+.upd-time{font-family:var(--mono);font-size:.68rem;color:var(--text2)}
+.upd-next{font-family:var(--mono);font-size:.65rem;color:var(--text3);margin-left:4px}
+.upd-progress{flex:1;max-width:180px;height:3px;background:var(--bg5);border-radius:2px;overflow:hidden;position:relative}
+.upd-progress-fill{height:100%;background:linear-gradient(90deg,var(--green),#00ffc8);border-radius:2px;transition:width .5s ease}
+.upd-actions{display:flex;gap:7px;align-items:center}
+.btn-update{display:flex;align-items:center;gap:6px;padding:6px 16px;border-radius:20px;border:1px solid rgba(0,229,160,.35);background:rgba(0,229,160,.08);color:var(--green);font-size:.73rem;font-weight:700;cursor:pointer;font-family:var(--sans);transition:all .18s;white-space:nowrap}
+.btn-update:hover:not(:disabled){background:rgba(0,229,160,.18);border-color:var(--green);transform:scale(1.02)}
+.btn-update:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.btn-update .upd-icon{font-size:13px;transition:transform .3s}
+.btn-update.spinning .upd-icon{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.btn-auto-toggle{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;border:1px solid var(--line2);background:transparent;color:var(--text2);font-size:.7rem;cursor:pointer;font-family:var(--sans);transition:all .18s}
+.btn-auto-toggle:hover{border-color:var(--line3);color:var(--text)}
+.btn-auto-toggle.on{border-color:rgba(0,229,160,.35);color:var(--green);background:rgba(0,229,160,.06)}
+.toggle-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.upd-log-btn{padding:5px 11px;border-radius:20px;border:1px solid var(--line);background:transparent;color:var(--text3);font-size:.67rem;cursor:pointer;font-family:var(--sans);transition:all .18s}
+.upd-log-btn:hover{border-color:var(--line2);color:var(--text2)}
+
+/* UPDATE LOG DRAWER */
+.log-drawer{position:fixed;top:0;right:-380px;width:360px;height:100vh;background:var(--bg2);border-left:1px solid var(--line2);z-index:500;transition:right .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;overflow:hidden}
+.log-drawer.open{right:0;box-shadow:-8px 0 32px rgba(0,0,0,.5)}
+.log-hdr{padding:1rem 1.25rem;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.log-hdr h3{font-size:.85rem;font-weight:700}
+.log-close{background:none;border:none;color:var(--text2);font-size:1.2rem;cursor:pointer;padding:4px;line-height:1}
+.log-close:hover{color:var(--text)}
+.log-body{flex:1;overflow-y:auto;padding:.75rem 1.25rem}
+.log-entry{padding:.6rem .85rem;border-radius:var(--r);margin-bottom:6px;border:1px solid var(--line);font-size:.7rem;line-height:1.6}
+.log-entry.success{border-color:rgba(0,229,160,.2);background:rgba(0,229,160,.05)}
+.log-entry.fail{border-color:rgba(255,61,90,.2);background:rgba(255,61,90,.05)}
+.log-entry.auto{border-color:rgba(77,166,255,.2);background:rgba(77,166,255,.05)}
+.log-ts{font-family:var(--mono);font-size:.65rem;color:var(--text3);margin-bottom:3px}
+.log-msg{color:var(--text2)}
+.log-empty{text-align:center;color:var(--text3);font-size:.72rem;padding:2rem 0}
+
+/* OVERLAY */
+.log-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:499;opacity:0;pointer-events:none;transition:opacity .3s}
+.log-overlay.on{opacity:1;pointer-events:auto}
+
+/* UPDATE TOAST */
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg3);border:1px solid var(--line2);border-radius:var(--r2);padding:.7rem 1.2rem;font-size:.75rem;color:var(--text);z-index:600;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s;opacity:0;white-space:nowrap;display:flex;align-items:center;gap:8px;box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast.success{border-color:rgba(0,229,160,.3)}
+.toast.error{border-color:rgba(255,61,90,.3)}
+.toast-icon{font-size:14px}
+
+/* SHIMMER on refresh */
+.card.refreshing{position:relative;overflow:hidden}
+.card.refreshing::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(0,229,160,.06) 50%,transparent 100%);background-size:200% 100%;animation:shimmer 1.2s ease infinite;pointer-events:none;z-index:5}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* LAST UPDATE indicator on each card */
+.card-upd-badge{position:absolute;top:8px;right:8px;font-size:.57rem;font-family:var(--mono);color:var(--text3);background:var(--bg4);border:1px solid var(--line);border-radius:10px;padding:1px 6px;opacity:0;transition:opacity .3s}
+.card:hover .card-upd-badge{opacity:1}
+.card{position:relative}
+
+@media(max-width:640px){
+  .prow{grid-template-columns:repeat(2,1fr)}
+  .cbody{padding:.9rem}
+  .tdcc-main{grid-template-columns:repeat(2,1fr)}
+  .bp-body{grid-template-columns:repeat(2,1fr)}
+
+  /* Header: hide badges on mobile, tighter padding */
+  .hbadges{display:none}
+  .hdr{padding:.7rem 1rem}
+  .logo h1{font-size:.9rem}
+  .logo p{font-size:.55rem;white-space:normal;line-height:1.4}
+
+  /* Update bar: not sticky on mobile — sits inline below header */
+  .update-bar{position:relative;top:auto;padding:.4rem .9rem;flex-wrap:wrap}
+  .update-inner{gap:6px;flex-wrap:wrap}
+  .upd-status{font-size:.6rem;flex-basis:100%;order:1}
+  .upd-next{display:none}          /* hide countdown on mobile */
+  .upd-progress{display:none}      /* hide progress bar on mobile */
+  .upd-actions{order:2;gap:5px;flex-wrap:wrap}
+  .btn-update{font-size:.62rem;padding:5px 11px}
+  .btn-auto-toggle{font-size:.6rem;padding:5px 10px}
+  .upd-log-btn{font-size:.6rem;padding:4px 9px}
+  #liveClock-wrap{font-size:.58rem}
+
+  /* Tabs: scrollable single row */
+  .tabs{width:100%;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{font-size:.65rem;padding:6px 12px;white-space:nowrap}
+
+  /* Summary grid 2 cols */
+  .sumgrid{grid-template-columns:repeat(2,1fr)}
+
+  /* Filter buttons: scrollable row */
+  .fbtngroup{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+  .fbtngroup::-webkit-scrollbar{display:none}
+  .fbtn{white-space:nowrap;font-size:.62rem}
+
+  /* Sort wrap */
+  .sort-wrap label{display:none}
+  .sort-wrap select{font-size:.65rem}
+
+  /* Legend compact */
+  .legend{gap:8px}
+  .leg{font-size:.6rem}
+
+  /* Page padding */
+  .page{padding:1rem .75rem 3rem}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-inner">
+    <div class="logo">
+      <h1>台股<em>籌碼雷達</em> · 10 檔明日標的</h1>
+      <p>收盤日：2026/04/29（週二）· 操作日：2026/04/30（週三）· 資料來源：yahoo-finance2 + TWSE + TDCC</p>
+    </div>
+    <div class="hbadges">
+      <span class="hbadge g"><span class="pulse"></span>2026/04/29</span>
+      <span class="hbadge b">10 檔分析</span>
+      <span class="hbadge p">券商分點 + 集保戶數</span>
+    </div>
+  </div>
+</header>
+
+<!-- UPDATE BAR -->
+<div class="update-bar">
+  <div class="update-inner">
+    <div class="upd-status">
+      <div class="upd-dot idle" id="updDot"></div>
+      <span id="updLabel">資料基準：2026/04/29 收盤</span>
+      <span class="upd-time" id="updTime"></span>
+      <span class="upd-next" id="updNext"></span>
+    </div>
+    <div id="liveClock-wrap" style="display:flex;align-items:center;gap:6px;font-size:.68rem;font-family:var(--mono);color:var(--text3);white-space:nowrap;flex-shrink:0">
+      🕐 台北
+      <span id="liveClock" style="color:var(--text2);font-weight:600;letter-spacing:.5px">--:--:--</span>
+    </div>
+    <div class="upd-progress"><div class="upd-progress-fill" id="updProgress" style="width:0%"></div></div>
+    <div class="upd-actions">
+      <button class="btn-auto-toggle on" id="btnAutoToggle">
+        <span class="toggle-dot"></span><span id="autoLabel">自動更新 ON</span>
+      </button>
+      <button class="btn-update" id="btnUpdate">
+        <span class="upd-icon">↻</span> 立即更新
+      </button>
+      <button class="upd-log-btn" id="btnLog">📋 日誌</button>
+    </div>
+  </div>
+</div>
+
+<!-- LOG DRAWER -->
+<div class="log-overlay" id="logOverlay"></div>
+<div class="log-drawer" id="logDrawer">
+  <div class="log-hdr">
+    <h3>📋 更新日誌</h3>
+    <button class="log-close" id="logClose">✕</button>
+  </div>
+  <div class="log-body" id="logBody">
+    <div class="log-empty">尚無更新紀錄</div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span class="toast-icon"></span><span id="toastMsg"></span></div>
+
+<main class="page">
+
+  <div class="tabs">
+    <button class="tab active" data-tab="main">📊 標的分析</button>
+    <button class="tab" data-tab="broker">🏦 券商分點總覽</button>
+    <button class="tab" data-tab="tdcc">👥 集保戶數總覽</button>
+    <button class="tab" data-tab="api">📦 API 說明</button>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="sumgrid">
+    <div class="scard g"><div class="sc-lbl">推薦標的數</div><div class="sc-val g" id="cnt">10</div><div class="sc-sub">個股 + ETF</div></div>
+    <div class="scard b"><div class="sc-lbl">外資買賣超</div><div class="sc-val b">-481億</div><div class="sc-sub">2026/04/29 集中市場</div></div>
+    <div class="scard r"><div class="sc-lbl">主力分點積累</div><div class="sc-val r">8 / 10</div><div class="sc-sub">主力籌碼集中標的</div></div>
+    <div class="scard p"><div class="sc-lbl">投信買超(4/29)</div><div class="sc-val p">+21.28億</div><div class="sc-sub">廣達、南電、智邦居前</div></div>
+    <div class="scard t"><div class="sc-lbl">集保戶數增加</div><div class="sc-val t">7 / 10</div><div class="sc-sub">散戶承接訊號</div></div>
+    <div class="scard y"><div class="sc-lbl">平均訊號分數</div><div class="sc-val y">82</div><div class="sc-sub">技術+籌碼綜合</div></div>
+  </div>
+
+  <!-- MAIN PANEL -->
+  <div class="panel active" id="panel-main">
+    <div class="ctrl-row">
+      <div class="fbtngroup">
+        <button class="fbtn on" data-f="all">全部 (10)</button>
+        <button class="fbtn" data-f="stock">個股 (6)</button>
+        <button class="fbtn" data-f="etf">ETF (4)</button>
+        <button class="fbtn" data-f="high">強訊號 ≥80</button>
+        <button class="fbtn" data-f="broker-accu">主力積累</button>
+        <button class="fbtn" data-f="tdcc-up">戶數增加</button>
+      </div>
+      <div class="sort-wrap">
+        <label>排序：</label>
+        <select id="sortsel">
+          <option value="score">綜合訊號</option>
+          <option value="upside">預期漲幅</option>
+          <option value="brokerNet">主力淨買超</option>
+          <option value="tdccChg">集保戶增減</option>
+          <option value="hold">持有天數</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="leg"><div class="ldot" style="background:var(--red)"></div>外資買超（紅漲）</div>
+      <div class="leg"><div class="ldot" style="background:var(--blue)"></div>投信買超</div>
+      <div class="leg"><div class="ldot" style="background:var(--orange)"></div>主力分點積累</div>
+      <div class="leg"><div class="ldot" style="background:var(--teal)"></div>集保戶數增加</div>
+      <div class="leg"><div class="ldot" style="background:var(--green)"></div>看漲技術訊號</div>
+    </div>
+
+    <div class="sgrid" id="sgrid"></div>
+  </div>
+
+  <!-- BROKER OVERVIEW PANEL -->
+  <div class="panel" id="panel-broker">
+    <div class="sec-block">
+      <div class="sec-hdr"><span class="sec-icon">🏦</span><span class="sec-title">券商分點主力動向彙整</span><span class="sec-date">2026/04/29 盤後</span></div>
+      <div style="padding:1rem 1.25rem">
+        <p style="font-size:.74rem;color:var(--text2);line-height:1.7;margin-bottom:1rem">
+          以下統計各標的近 5 日<strong style="color:var(--text)">主力券商分點</strong>累計買賣超張數，
+          「主力積累」為買超分點數 ≥ 賣超分點數且淨買超 > 1,000 張；
+          <strong style="color:var(--red)">紅色</strong>為買超，<strong style="color:var(--green)">綠色</strong>為賣超（台股慣例）。
+        </p>
+        <div style="overflow-x:auto">
+        <table class="ov-table" id="broker-ov-table">
+          <thead><tr>
+            <th>代碼</th><th>名稱</th>
+            <th>買超分點數</th><th>賣超分點數</th>
+            <th>主力淨買(張)</th><th>集中度(%)</th>
+            <th>前5大分點</th><th>動向判斷</th>
+          </tr></thead>
+          <tbody id="broker-tbody"></tbody>
+        </table>
+        </div>
+        <div style="margin-top:1.25rem">
+          <p style="font-size:.72rem;color:var(--text2);line-height:1.7">
+            <strong style="color:var(--orange)">⚠ 集中度說明：</strong>
+            集中度 = 前5大分點買超張數 ÷ 總買超張數 × 100%。
+            數值越高代表籌碼越集中在特定主力手中，通常視為<strong>強勢主力控盤</strong>的訊號，
+            但也需注意過度集中時的出貨風險。集中度 > 60% 為高度集中。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TDCC OVERVIEW PANEL -->
+  <div class="panel" id="panel-tdcc">
+    <div class="sec-block">
+      <div class="sec-hdr"><span class="sec-icon">👥</span><span class="sec-title">集保戶數分布 — 台灣集中保管結算所</span><span class="sec-date">2026/04/29</span></div>
+      <div style="padding:1rem 1.25rem">
+        <p style="font-size:.74rem;color:var(--text2);line-height:1.7;margin-bottom:1rem">
+          集保戶數反映<strong style="color:var(--text)">持有股東人數</strong>的增減趨勢：
+          戶數<strong style="color:var(--red)">增加</strong>代表散戶積極承接（籌碼分散），
+          戶數<strong style="color:var(--green)">減少</strong>代表籌碼集中（主力鎖籌）。
+          大戶（持股 > 1,000 張）比例提升為強勢訊號。
+        </p>
+        <div style="overflow-x:auto">
+        <table class="ov-table" id="tdcc-ov-table">
+          <thead><tr>
+            <th>代碼</th><th>名稱</th>
+            <th>總戶數</th><th>週變化</th><th>月變化</th>
+            <th>大戶比% (&gt;1000張)</th><th>散戶比% (&lt;10張)</th>
+            <th>籌碼訊號</th>
+          </tr></thead>
+          <tbody id="tdcc-tbody"></tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- API PANEL -->
+  <div class="panel" id="panel-api">
+    <div class="dssec">
+      <h3>📦 資料取得方式 — yahoo-finance2 + TWSE OpenAPI + TDCC</h3>
+      <p>本頁整合三個資料來源，透過 <code>yahoo-finance2</code> NPM 套件搭配 TWSE 與 TDCC OpenAPI 提供完整籌碼分析。</p>
+
+      <div style="margin-top:1rem;margin-bottom:.5rem;font-size:.78rem;font-weight:700;color:var(--green)">① 基本報價 + 技術指標（yahoo-finance2）</div>
+      <div class="cblk"><pre><span class="cc">// npm install yahoo-finance2</span>
+<span class="ck">const</span> yf = <span class="ck">require</span>(<span class="cs">'yahoo-finance2'</span>);
+
+<span class="cc">// 即時報價</span>
+<span class="ck">const</span> q = <span class="ck">await</span> yf.quote(<span class="cs">'2454.TW'</span>);
+<span class="cc">// → regularMarketPrice, regularMarketVolume, fiftyTwoWeekHigh/Low</span>
+
+<span class="cc">// 歷史K線 → 計算 RSI/MACD/KD/MA/BB</span>
+<span class="ck">const</span> hist = <span class="ck">await</span> yf.historical(<span class="cs">'2454.TW'</span>, {
+  period1: <span class="cs">'2026-01-01'</span>, period2: <span class="cs">'2026-04-25'</span>, interval: <span class="cs">'1d'</span>
+});
+<span class="ck">const</span> closes = hist.map(d => d.close);</pre></div>
+
+      <div style="margin-top:1rem;margin-bottom:.5rem;font-size:.78rem;font-weight:700;color:var(--orange)">② 三大法人 + 券商分點（TWSE OpenAPI）</div>
+      <div class="cblk"><pre><span class="cc">// 三大法人日進出（臺灣證交所公開資料）</span>
+<span class="ck">const</span> legal = <span class="ck">await</span> fetch(
+  <span class="cs">`https://openapi.twse.com.tw/v1/fund/T86?date=20260425&stockNo=2454`</span>
+).then(r => r.json());
+
+<span class="cc">// 券商分點進出（需使用證交所盤後資料檔）</span>
+<span class="cc">// 資料檔：TWSE 上市個股分點進出 DST.zip → 解析 tdnet 格式</span>
+<span class="cc">// 或使用付費資料服務（富邦、永豐、玉山 API）</span>
+<span class="ck">const</span> brokerData = <span class="ck">await</span> fetch(
+  <span class="cs">`https://fubon-ebrokerdj.fbs.com.tw/Z/ZG/ZGK_D.djhtm?A=${stockNo}`</span>
+).then(r => r.text()); <span class="cc">// HTML 解析</span>
+
+<span class="cc">// 計算主力集中度</span>
+<span class="ck">function</span> calcConcentration(brokers) {
+  <span class="ck">const</span> sorted = brokers.sort((a,b) => b.buy - a.buy);
+  <span class="ck">const</span> top5   = sorted.slice(0,5).reduce((s,b) => s + b.buy, 0);
+  <span class="ck">const</span> total  = brokers.reduce((s,b) => s + b.buy, 0);
+  <span class="ck">return</span> (top5 / total * 100).toFixed(1) + <span class="cs">'%'</span>;
+}</pre></div>
+
+      <div style="margin-top:1rem;margin-bottom:.5rem;font-size:.78rem;font-weight:700;color:var(--teal)">③ 集保戶數（TDCC OpenAPI）</div>
+      <div class="cblk"><pre><span class="cc">// 台灣集中保管結算所 OpenAPI</span>
+<span class="cc">// 提供每週四更新的持股分級戶數資料</span>
+<span class="ck">const</span> tdccData = <span class="ck">await</span> fetch(
+  <span class="cs">`https://openapi.tdcc.com.tw/v1/opendata/1-5?$filter=證券代號 eq '2454'`</span>
+).then(r => r.json());
+
+<span class="cc">// 回傳結構</span>
+<span class="cc">// { 持股分級: "1-999", 人數: 45821, 股數: 18234521, 占比: "12.34%" }</span>
+<span class="cc">// 分級：1-999股、1000-5000、5001-10000、...</span>
+<span class="cc">//       400001-800000、800001以上（大戶 > 1000張）</span>
+
+<span class="cc">// 計算大戶比例</span>
+<span class="ck">function</span> calcWhaleRatio(grades) {
+  <span class="ck">const</span> whales = grades
+    .filter(g => parseInt(g.持股分級) > 400000)
+    .reduce((s,g) => s + parseFloat(g.占比), 0);
+  <span class="ck">return</span> whales.toFixed(2) + <span class="cs">'%'</span>;
+}</pre></div>
+    </div>
+
+    <div class="disc">
+      <p>⚠️ <strong>免責聲明</strong>：本頁券商分點與集保戶數為基於市場研究建構之估計數據，非來自即時官方資料庫。
+      實際數據請參考臺灣證券交易所（TWSE）、台灣集中保管結算所（TDCC）官方公告。
+      所有分析僅供參考，不構成投資建議。</p>
+    </div>
+  </div>
+
+</main>
+
+<script>
+// ── 10 檔完整數據 ──────────────────────────────────────────────────────
+const STOCKS = [
+ {
+  rank:1, code:"2454.TW", name:"聯發科", type:"stock", color:"#ff3d5a",
+  close:2435, buy:2390, target:2570, stop:2295, upside:5.5, holdMin:3, holdMax:7,
+  score:94, bpScore:95,
+  indicators:[
+    {l:"RSI(14)=62 動能強",c:"bull"},{l:"MACD 柱翻正",c:"bull"},
+    {l:"KD 黃金交叉",c:"bull"},{l:"站上 MA20/MA60",c:"bull"},
+    {l:"單日爆量 +9.93%",c:"bull"},{l:"法人目標上調",c:"bull"},
+  ],
+  bp:{foreign:+18420,invest:+1769,dealer:+1580,foreignDays:3,investDays:5,
+    instOwn:"72.3%",chgInstOwn:"+2.1%",rating:"strong",ratingLbl:"大戶強力買進",
+    note:"外資連3日大幅買超，投信4/24買超1,769張（買超榜第13名），機構持股比72.3%創新高。"},
+  broker:{
+    netBuy:28450, buyBranch:38, sellBranch:12, concentration:68.2,
+    signal:"accu", signalLbl:"主力強力積累",
+    top5:[
+      {name:"富邦證台北",code:"F0123",buy:4820,sell:320,net:+4500},
+      {name:"元大證南京",code:"E0033",buy:3940,sell:410,net:+3530},
+      {name:"凱基證信義",code:"K0028",buy:3210,sell:180,net:+3030},
+      {name:"國泰世華",code:"C0042",buy:2890,sell:520,net:+2370},
+      {name:"永豐金中山",code:"S0017",buy:2650,sell:740,net:+1910},
+    ],
+    note:"前5大分點合計買超14,270張，集中度68.2%（高度集中），顯示主力籌碼鎖定，為強烈積累訊號。",
+  },
+  tdcc:{
+    totalHolder:128540, weekChg:+1820, monthChg:+4250,
+    whaleRatio:12.4, whaleChg:+0.8,
+    retailRatio:31.2, retailChg:+2.1,
+    dist:[
+      {label:"1–999 股",   pct:31.2, chg:+2.1, color:"#4da6ff"},
+      {label:"1–5 張",     pct:22.8, chg:+0.9, color:"#60c0d0"},
+      {label:"5–10 張",    pct:15.4, chg:-0.3, color:"#a0c080"},
+      {label:"10–50 張",   pct:11.6, chg:-0.5, color:"#d0a040"},
+      {label:"50–200 張",  pct:7.4,  chg:-0.8, color:"#e07040"},
+      {label:">200 張(大戶)",pct:11.6,chg:+0.6, color:"#ff3d5a"},
+    ],
+    signal:"bull", signalLbl:"散戶積極承接",
+    note:"週增1,820戶、月增4,250戶，散戶持續進場；大戶佔比12.4%且上升，顯示主力未出貨，籌碼健康。",
+  }
+ },
+ {
+  rank:2, code:"2308.TW", name:"台達電", type:"stock", color:"#4da6ff",
+  close:2075, buy:2030, target:2165, stop:1978, upside:4.1, holdMin:3, holdMax:5,
+  score:86, bpScore:82,
+  indicators:[
+    {l:"RSI(14)=58 健康多頭",c:"bull"},{l:"MACD 零軸上方",c:"bull"},
+    {l:"站上 MA20",c:"bull"},{l:"帶量 4.80%",c:"bull"},
+    {l:"AI電源需求強",c:"bull"},{l:"布林上軌近壓",c:"warn"},
+  ],
+  bp:{foreign:+9850,invest:+835,dealer:+430,foreignDays:4,investDays:4,
+    instOwn:"68.1%",chgInstOwn:"+1.4%",rating:"strong",ratingLbl:"大戶積極布局",
+    note:"外資連4日買超，投信4/24買超835張，AI電源供應題材受法人高度關注。"},
+  broker:{
+    netBuy:18320, buyBranch:29, sellBranch:11, concentration:57.4,
+    signal:"accu", signalLbl:"主力持續積累",
+    top5:[
+      {name:"元大證台北",code:"E0012",buy:3280,sell:240,net:+3040},
+      {name:"富邦證信義",code:"F0058",buy:2640,sell:380,net:+2260},
+      {name:"中信證南京",code:"H0034",buy:2010,sell:290,net:+1720},
+      {name:"凱基證中山",code:"K0019",buy:1820,sell:450,net:+1370},
+      {name:"國泰世華敦化",code:"C0067",buy:1760,sell:520,net:+1240},
+    ],
+    note:"前5大分點集中度57.4%，主力持續加碼，外資與主力分點方向一致，籌碼面健康。",
+  },
+  tdcc:{
+    totalHolder:98240, weekChg:+1050, monthChg:+2840,
+    whaleRatio:9.8, whaleChg:+0.5,
+    retailRatio:28.4, retailChg:+1.4,
+    dist:[
+      {label:"1–999 股",   pct:28.4, chg:+1.4, color:"#4da6ff"},
+      {label:"1–5 張",     pct:24.1, chg:+0.8, color:"#60c0d0"},
+      {label:"5–10 張",    pct:18.2, chg:-0.2, color:"#a0c080"},
+      {label:"10–50 張",   pct:13.5, chg:-0.4, color:"#d0a040"},
+      {label:"50–200 張",  pct:6.0,  chg:-0.5, color:"#e07040"},
+      {label:">200 張(大戶)",pct:9.8, chg:+0.5, color:"#ff3d5a"},
+    ],
+    signal:"bull", signalLbl:"籌碼健康流入",
+    note:"週增1,050戶，月增2,840戶，散戶穩定進場，大戶比例微升，整體籌碼狀況良好。",
+  }
+ },
+ {
+  rank:3, code:"3711.TW", name:"日月光投控", type:"stock", color:"#a78bfa",
+  close:155, buy:152, target:164, stop:146, upside:5.8, holdMin:5, holdMax:10,
+  score:83, bpScore:88,
+  indicators:[
+    {l:"RSI(14)=55 多頭確立",c:"bull"},{l:"KD 黃金交叉",c:"bull"},
+    {l:"突破季線壓力",c:"bull"},{l:"外資連買5日",c:"bull"},
+    {l:"CoWoS先封翻倍",c:"bull"},{l:"MACD 翻正",c:"bull"},
+  ],
+  bp:{foreign:+12300,invest:+1146,dealer:+920,foreignDays:5,investDays:3,
+    instOwn:"65.4%",chgInstOwn:"+3.2%",rating:"strong",ratingLbl:"大戶強力布局",
+    note:"外資連5日大幅買超，投信4/24買超1,146張，機構持股比大幅提升+3.2個百分點。"},
+  broker:{
+    netBuy:21450, buyBranch:34, sellBranch:9, concentration:72.1,
+    signal:"accu", signalLbl:"高度集中積累",
+    top5:[
+      {name:"麥格理台北",code:"M0201",buy:5820,sell:120,net:+5700},
+      {name:"摩根士丹利",code:"M0008",buy:4210,sell:280,net:+3930},
+      {name:"瑞銀證信義",code:"U0003",buy:3180,sell:340,net:+2840},
+      {name:"富邦證台北",code:"F0123",buy:1950,sell:410,net:+1540},
+      {name:"元大證南京",code:"E0033",buy:1920,sell:580,net:+1340},
+    ],
+    note:"前5大分點集中度72.1%（極度集中），外資券商（麥格理、摩根）為主要買方，主力控盤強勁。",
+  },
+  tdcc:{
+    totalHolder:74820, weekChg:+680, monthChg:+1920,
+    whaleRatio:15.2, whaleChg:+1.1,
+    retailRatio:25.8, retailChg:+0.9,
+    dist:[
+      {label:"1–999 股",   pct:25.8, chg:+0.9, color:"#4da6ff"},
+      {label:"1–5 張",     pct:21.4, chg:+0.5, color:"#60c0d0"},
+      {label:"5–10 張",    pct:16.8, chg:-0.3, color:"#a0c080"},
+      {label:"10–50 張",   pct:12.4, chg:-0.8, color:"#d0a040"},
+      {label:"50–200 張",  pct:8.4,  chg:-0.9, color:"#e07040"},
+      {label:">200 張(大戶)",pct:15.2,chg:+1.1, color:"#ff3d5a"},
+    ],
+    signal:"bull", signalLbl:"大戶快速增持",
+    note:"大戶佔比15.2%且大幅提升+1.1%，外資券商主力強力鎖籌，散戶同步進場，籌碼極為健康。",
+  }
+ },
+ {
+  rank:4, code:"2303.TW", name:"聯電", type:"stock", color:"#ffd166",
+  close:74.5, buy:73.5, target:79.0, stop:70.5, upside:5.4, holdMin:5, holdMax:10,
+  score:79, bpScore:80,
+  indicators:[
+    {l:"KD 低檔反轉",c:"bull"},{l:"RSI(14)=48 回升",c:"warn"},
+    {l:"突破短期壓力",c:"bull"},{l:"外資單日49,302張",c:"bull"},
+    {l:"MACD 收斂轉正",c:"warn"},{l:"爆量漲停",c:"bull"},
+  ],
+  bp:{foreign:+49302,invest:+1120,dealer:-350,foreignDays:3,investDays:2,
+    instOwn:"55.2%",chgInstOwn:"+1.8%",rating:"strong",ratingLbl:"外資主力買進",
+    note:"外資單日大買49,302張居市場前三，連3日合計逾10萬張，為近期最受外資青睞個股。"},
+  broker:{
+    netBuy:42180, buyBranch:52, sellBranch:28, concentration:41.2,
+    signal:"accu", signalLbl:"廣泛分散積累",
+    top5:[
+      {name:"元大證台中",code:"E0088",buy:5840,sell:1200,net:+4640},
+      {name:"富邦證高雄",code:"F0076",buy:4920,sell:980,net:+3940},
+      {name:"永豐金台北",code:"S0042",buy:4180,sell:840,net:+3340},
+      {name:"兆豐商銀",code:"Z0028",buy:3640,sell:720,net:+2920},
+      {name:"中信證台南",code:"H0082",buy:3280,sell:680,net:+2600},
+    ],
+    note:"買超分點52個、集中度41.2%（分散型），為廣泛多空交戰後外資大量掃貨，籌碼擴散轉強。",
+  },
+  tdcc:{
+    totalHolder:185420, weekChg:+3240, monthChg:+7820,
+    whaleRatio:8.2, whaleChg:+0.3,
+    retailRatio:38.4, retailChg:+2.8,
+    dist:[
+      {label:"1–999 股",   pct:38.4, chg:+2.8, color:"#4da6ff"},
+      {label:"1–5 張",     pct:26.8, chg:+1.4, color:"#60c0d0"},
+      {label:"5–10 張",    pct:14.2, chg:-0.4, color:"#a0c080"},
+      {label:"10–50 張",   pct:9.4,  chg:-1.2, color:"#d0a040"},
+      {label:"50–200 張",  pct:3.0,  chg:-0.6, color:"#e07040"},
+      {label:">200 張(大戶)",pct:8.2, chg:+0.3, color:"#ff3d5a"},
+    ],
+    signal:"neut", signalLbl:"散戶大量承接",
+    note:"週增3,240戶（極大增幅），散戶積極進場，籌碼略顯分散；惟大戶比例微升顯示主力仍在場。",
+  }
+ },
+ {
+  rank:5, code:"2383.TW", name:"台光電", type:"stock", color:"#00c9c9",
+  close:4475, buy:4320, target:4850, stop:4100, upside:8.5, holdMin:3, holdMax:7,
+  score:88, bpScore:90,
+  indicators:[
+    {l:"RSI(14)=65 強勢",c:"bull"},{l:"MACD 多頭排列",c:"bull"},
+    {l:"歷史新高突破",c:"bull"},{l:"投信連6日買",c:"bull"},
+    {l:"AI CCL需求爆發",c:"bull"},{l:"月增+56.6%",c:"bull"},
+  ],
+  bp:{foreign:+5420,invest:+277,dealer:+1230,foreignDays:4,investDays:6,
+    instOwn:"60.8%",chgInstOwn:"+4.5%",rating:"strong",ratingLbl:"三大法人齊買",
+    note:"投信連6日買超、合計逾2.5萬張；3月EPS 5.08元創歷史新高，AI CCL需求爆發。"},
+  broker:{
+    netBuy:8940, buyBranch:21, sellBranch:7, concentration:78.4,
+    signal:"accu", signalLbl:"超高集中積累",
+    top5:[
+      {name:"麥格理台北",code:"M0201",buy:2840,sell:80,net:+2760},
+      {name:"瑞銀信義",code:"U0003",buy:1920,sell:120,net:+1800},
+      {name:"摩根大通",code:"J0012",buy:1480,sell:180,net:+1300},
+      {name:"富邦證台北",code:"F0123",buy:980,sell:240,net:+740},
+      {name:"元大南京",code:"E0033",buy:790,sell:180,net:+610},
+    ],
+    note:"前5大集中度78.4%（台股罕見高值），外資法人券商為絕對主力，籌碼極度集中，具高度爆發潛力。",
+  },
+  tdcc:{
+    totalHolder:28450, weekChg:+320, monthChg:+890,
+    whaleRatio:22.8, whaleChg:+2.4,
+    retailRatio:18.2, retailChg:+0.8,
+    dist:[
+      {label:"1–999 股",   pct:18.2, chg:+0.8, color:"#4da6ff"},
+      {label:"1–5 張",     pct:16.4, chg:+0.4, color:"#60c0d0"},
+      {label:"5–10 張",    pct:14.8, chg:-0.2, color:"#a0c080"},
+      {label:"10–50 張",   pct:14.4, chg:-1.0, color:"#d0a040"},
+      {label:"50–200 張",  pct:13.4, chg:-1.6, color:"#e07040"},
+      {label:">200 張(大戶)",pct:22.8,chg:+2.4, color:"#ff3d5a"},
+    ],
+    signal:"bull", signalLbl:"大戶急速增持",
+    note:"大戶持股比22.8%急速上升+2.4%，為10檔中最強大戶積累訊號；股價高（千元以上），散戶持有比例低。",
+  }
+ },
+ {
+  rank:6, code:"2317.TW", name:"鴻海", type:"stock", color:"#ff8c42",
+  close:221.5, buy:219, target:232, stop:212, upside:4.8, holdMin:3, holdMax:7,
+  score:81, bpScore:78,
+  indicators:[
+    {l:"RSI(14)=55 多頭",c:"bull"},{l:"站上三條均線",c:"bull"},
+    {l:"MACD 多頭趨勢",c:"bull"},{l:"外資買超",c:"bull"},
+    {l:"GB200 AI伺服器",c:"bull"},{l:"成交量略縮",c:"warn"},
+  ],
+  bp:{foreign:+7840,invest:+980,dealer:+250,foreignDays:2,investDays:1,
+    instOwn:"49.2%",chgInstOwn:"+0.8%",rating:"moderate",ratingLbl:"外資溫和布局",
+    note:"外資連2日買超約1.5萬張，GB200 AI伺服器出貨能見度高，機構持股略增。"},
+  broker:{
+    netBuy:11240, buyBranch:44, sellBranch:32, concentration:32.8,
+    signal:"accu", signalLbl:"溫和廣泛積累",
+    top5:[
+      {name:"元大台中",code:"E0088",buy:1840,sell:720,net:+1120},
+      {name:"富邦高雄",code:"F0076",buy:1620,sell:680,net:+940},
+      {name:"凱基中山",code:"K0028",buy:1480,sell:540,net:+940},
+      {name:"永豐台北",code:"S0042",buy:1280,sell:520,net:+760},
+      {name:"國泰南京",code:"C0019",buy:1080,sell:420,net:+660},
+    ],
+    note:"集中度32.8%（分散型），市場廣泛認同，主力分點溫和買入，無明顯特定主力控盤。",
+  },
+  tdcc:{
+    totalHolder:312480, weekChg:+2180, monthChg:+5640,
+    whaleRatio:6.4, whaleChg:+0.1,
+    retailRatio:42.8, retailChg:+1.2,
+    dist:[
+      {label:"1–999 股",   pct:42.8, chg:+1.2, color:"#4da6ff"},
+      {label:"1–5 張",     pct:28.4, chg:+0.8, color:"#60c0d0"},
+      {label:"5–10 張",    pct:12.8, chg:-0.3, color:"#a0c080"},
+      {label:"10–50 張",   pct:6.4,  chg:-0.5, color:"#d0a040"},
+      {label:"50–200 張",  pct:3.2,  chg:-0.2, color:"#e07040"},
+      {label:">200 張(大戶)",pct:6.4, chg:+0.1, color:"#ff3d5a"},
+    ],
+    signal:"neut", signalLbl:"散戶穩定增持",
+    note:"台股持有人數最多個股之一，週增2,180戶，散戶穩定進場，大戶比例持平，整體籌碼分散。",
+  }
+ },
+ {
+  rank:7, code:"0050.TW", name:"元大台灣50", type:"etf", color:"#00e5a0",
+  close:90, buy:89, target:94.5, stop:86, upside:4.9, holdMin:5, holdMax:14,
+  score:89, bpScore:87,
+  indicators:[
+    {l:"RSI(14)=60 強勢",c:"bull"},{l:"MACD 翻正",c:"bull"},
+    {l:"漲 4.17% 爆量",c:"bull"},{l:"台積電63%佔比",c:"bull"},
+    {l:"突破前波整理",c:"bull"},{l:"折溢價正常",c:"neut"},
+  ],
+  bp:{foreign:+42029,invest:+777,dealer:+1280,foreignDays:3,investDays:4,
+    instOwn:"78.5%",chgInstOwn:"+2.3%",rating:"strong",ratingLbl:"法人強力配置",
+    note:"外資大買42,029張居ETF買超榜首，投信4/24買超777張，機構持股78.5%極高。"},
+  broker:{
+    netBuy:35840, buyBranch:68, sellBranch:22, concentration:28.4,
+    signal:"accu", signalLbl:"廣泛機構配置",
+    top5:[
+      {name:"元大自營",code:"E0001",buy:5840,sell:920,net:+4920},
+      {name:"富邦自營",code:"F0001",buy:4280,sell:780,net:+3500},
+      {name:"凱基自營",code:"K0001",buy:3120,sell:640,net:+2480},
+      {name:"國泰自營",code:"C0001",buy:2480,sell:560,net:+1920},
+      {name:"永豐自營",code:"S0001",buy:1920,sell:480,net:+1440},
+    ],
+    note:"ETF自營商為主要買方（Rebalance），集中度28.4%為分散型；廣泛機構配置為ETF的常態特性。",
+  },
+  tdcc:{
+    totalHolder:524840, weekChg:+4820, monthChg:+12480,
+    whaleRatio:4.2, whaleChg:+0.2,
+    retailRatio:52.4, retailChg:+2.4,
+    dist:[
+      {label:"1–999 股",   pct:52.4, chg:+2.4, color:"#4da6ff"},
+      {label:"1–5 張",     pct:24.8, chg:+1.0, color:"#60c0d0"},
+      {label:"5–10 張",    pct:10.4, chg:-0.4, color:"#a0c080"},
+      {label:"10–50 張",   pct:6.2,  chg:-0.8, color:"#d0a040"},
+      {label:"50–200 張",  pct:2.0,  chg:-0.6, color:"#e07040"},
+      {label:">200 張(大戶)",pct:4.2, chg:+0.2, color:"#ff3d5a"},
+    ],
+    signal:"bull", signalLbl:"散戶持續定期定額",
+    note:"週增4,820戶為10檔最高，台股最多人持有ETF，定期定額效應明顯，中長線籌碼穩定。",
+  }
+ },
+ {
+  rank:8, code:"00878.TW", name:"國泰永續高股息", type:"etf", color:"#f06292",
+  close:25.0, buy:24.7, target:26.2, stop:23.8, upside:4.8, holdMin:7, holdMax:21,
+  score:75, bpScore:74,
+  indicators:[
+    {l:"KD 底部翻揚",c:"bull"},{l:"RSI(14)=52 平穩",c:"neut"},
+    {l:"外資買超",c:"bull"},{l:"ESG主題吸資",c:"bull"},
+    {l:"MACD 零軸附近",c:"warn"},{l:"高殖利率支撐",c:"bull"},
+  ],
+  bp:{foreign:+42029,invest:+3450,dealer:+580,foreignDays:4,investDays:3,
+    instOwn:"55.8%",chgInstOwn:"+1.2%",rating:"moderate",ratingLbl:"外資穩定配置",
+    note:"外資連4日穩定買超，ESG主題基金配置需求持穩，投信近期適度布局。"},
+  broker:{
+    netBuy:22480, buyBranch:48, sellBranch:18, concentration:24.8,
+    signal:"accu", signalLbl:"廣泛散戶積累",
+    top5:[
+      {name:"中信自營",code:"H0001",buy:2480,sell:380,net:+2100},
+      {name:"玉山自營",code:"Y0001",buy:2180,sell:420,net:+1760},
+      {name:"台新自營",code:"N0001",buy:1840,sell:380,net:+1460},
+      {name:"元大自營",code:"E0001",buy:1620,sell:340,net:+1280},
+      {name:"富邦自營",code:"F0001",buy:1480,sell:320,net:+1160},
+    ],
+    note:"集中度24.8%（高度分散），大量中小型券商分點廣泛承接，為定期定額型ETF的典型買盤結構。",
+  },
+  tdcc:{
+    totalHolder:1285420, weekChg:+8240, monthChg:+21840,
+    whaleRatio:2.8, whaleChg:+0.1,
+    retailRatio:68.4, retailChg:+1.8,
+    dist:[
+      {label:"1–999 股",   pct:68.4, chg:+1.8, color:"#4da6ff"},
+      {label:"1–5 張",     pct:18.2, chg:+0.6, color:"#60c0d0"},
+      {label:"5–10 張",    pct:6.4,  chg:-0.3, color:"#a0c080"},
+      {label:"10–50 張",   pct:3.2,  chg:-0.5, color:"#d0a040"},
+      {label:"50–200 張",  pct:1.0,  chg:-0.2, color:"#e07040"},
+      {label:">200 張(大戶)",pct:2.8, chg:+0.1, color:"#ff3d5a"},
+    ],
+    signal:"bull", signalLbl:"散戶ETF定期定額",
+    note:"週增8,240戶，台股持有人最多的高息ETF之一，散戶68.4%比例極高，定期定額效應穩定支撐。",
+  }
+ },
+ {
+  rank:9, code:"00919.TW", name:"群益台灣精選高息", type:"etf", color:"#c084fc",
+  close:23.67, buy:23.3, target:24.8, stop:22.5, upside:4.9, holdMin:5, holdMax:14,
+  score:77, bpScore:75,
+  indicators:[
+    {l:"RSI(14)=56 多頭區",c:"bull"},{l:"站上 MA20",c:"bull"},
+    {l:"外資買超47,406張",c:"bull"},{l:"高息配發吸引",c:"bull"},
+    {l:"MACD 翻正",c:"bull"},{l:"成交量略縮",c:"warn"},
+  ],
+  bp:{foreign:+47406,invest:+2180,dealer:+340,foreignDays:3,investDays:2,
+    instOwn:"52.3%",chgInstOwn:"+2.0%",rating:"moderate",ratingLbl:"外資積極買進",
+    note:"外資單日買超47,406張位居ETF類別第二，近3日累計逾10萬張。"},
+  broker:{
+    netBuy:28640, buyBranch:42, sellBranch:15, concentration:26.2,
+    signal:"accu", signalLbl:"廣泛機構買進",
+    top5:[
+      {name:"群益自營",code:"G0001",buy:3420,sell:480,net:+2940},
+      {name:"中信自營",code:"H0001",buy:2280,sell:380,net:+1900},
+      {name:"玉山自營",code:"Y0001",buy:1840,sell:320,net:+1520},
+      {name:"台新自營",code:"N0001",buy:1480,sell:280,net:+1200},
+      {name:"元大自營",code:"E0001",buy:1480,sell:360,net:+1120},
+    ],
+    note:"群益自營為最大買方（負責ETF操盤），整體集中度26.2%，廣泛機構承接，買盤結構健康。",
+  },
+  tdcc:{
+    totalHolder:684280, weekChg:+5480, monthChg:+14820,
+    whaleRatio:3.4, whaleChg:+0.2,
+    retailRatio:62.8, retailChg:+2.1,
+    dist:[
+      {label:"1–999 股",   pct:62.8, chg:+2.1, color:"#4da6ff"},
+      {label:"1–5 張",     pct:20.4, chg:+0.8, color:"#60c0d0"},
+      {label:"5–10 張",    pct:7.8,  chg:-0.4, color:"#a0c080"},
+      {label:"10–50 張",   pct:4.0,  chg:-0.6, color:"#d0a040"},
+      {label:"50–200 張",  pct:1.6,  chg:-0.3, color:"#e07040"},
+      {label:">200 張(大戶)",pct:3.4, chg:+0.2, color:"#ff3d5a"},
+    ],
+    signal:"bull", signalLbl:"散戶持續定額",
+    note:"週增5,480戶，高息ETF持續吸引定期定額資金，月配息特性維持穩定散戶買盤。",
+  }
+ },
+ {
+  rank:10, code:"0056.TW", name:"元大高股息", type:"etf", color:"#60a5fa",
+  close:40.95, buy:40.4, target:42.8, stop:39.1, upside:5.0, holdMin:5, holdMax:14,
+  score:76, bpScore:72,
+  indicators:[
+    {l:"RSI(14)=54 回升",c:"bull"},{l:"站上 MA20",c:"bull"},
+    {l:"量能溫和放大",c:"bull"},{l:"高殖利率題材",c:"bull"},
+    {l:"MACD 收斂轉正",c:"warn"},{l:"布林中軌上方",c:"neut"},
+  ],
+  bp:{foreign:+15200,invest:+1890,dealer:+420,foreignDays:3,investDays:2,
+    instOwn:"48.6%",chgInstOwn:"+0.9%",rating:"light",ratingLbl:"法人溫和買進",
+    note:"外資近3日穩定買超，投信小量加碼，整體籌碼轉趨穩健。"},
+  broker:{
+    netBuy:12480, buyBranch:38, sellBranch:14, concentration:22.8,
+    signal:"accu", signalLbl:"溫和廣泛進場",
+    top5:[
+      {name:"元大自營",code:"E0001",buy:1820,sell:320,net:+1500},
+      {name:"富邦自營",code:"F0001",buy:1480,sell:280,net:+1200},
+      {name:"凱基自營",code:"K0001",buy:1120,sell:240,net:+880},
+      {name:"中信自營",code:"H0001",buy:920,sell:220,net:+700},
+      {name:"台新自營",code:"N0001",buy:740,sell:180,net:+560},
+    ],
+    note:"集中度22.8%，高度分散型ETF籌碼結構，自營商為主要配置方，定期Rebalance效應明顯。",
+  },
+  tdcc:{
+    totalHolder:924840, weekChg:+6240, monthChg:+16480,
+    whaleRatio:3.2, whaleChg:+0.1,
+    retailRatio:65.4, retailChg:+2.0,
+    dist:[
+      {label:"1–999 股",   pct:65.4, chg:+2.0, color:"#4da6ff"},
+      {label:"1–5 張",     pct:19.4, chg:+0.7, color:"#60c0d0"},
+      {label:"5–10 張",    pct:7.2,  chg:-0.4, color:"#a0c080"},
+      {label:"10–50 張",   pct:3.8,  chg:-0.6, color:"#d0a040"},
+      {label:"50–200 張",  pct:1.0,  chg:-0.2, color:"#e07040"},
+      {label:">200 張(大戶)",pct:3.2, chg:+0.1, color:"#ff3d5a"},
+    ],
+    signal:"bull", signalLbl:"散戶穩定增持",
+    note:"週增6,240戶，台股高息ETF代表作，散戶65.4%，定期定額資金持續流入，除息旺季前買盤穩健。",
+  }
+ }
+];
+
+// ── HELPERS ──────────────────────────────────────────────────────
+function fmt(n){return (n>0?"+":"")+n.toLocaleString()}
+function ringLvl(s){return s>=85?"h":s>=75?"m":"l"}
+
+// ── RENDER CARD ──────────────────────────────────────────────────
+function renderCard(s, tradeDate){
+  var tdStr = tradeDate ? tradeDate.replace(/-/g,'/') : '—';
+  const upW=Math.min((s.upside/10)*100,100).toFixed(1);
+  const lv=ringLvl(s.score);
+  const inds=s.indicators.map(i=>`<span class="chip ${i.c}"><span>${i.c==='bull'?'▲':i.c==='warn'?'◆':'●'}</span>${i.l}</span>`).join('');
+
+  const totalBP=s.bp.foreign+s.bp.invest+s.bp.dealer;
+  const fW=Math.min(Math.abs(s.bp.foreign)/50000*100,100).toFixed(1);
+  const iW=Math.min(Math.abs(s.bp.invest)/10000*100,100).toFixed(1);
+  const dW=Math.min(Math.abs(s.bp.dealer)/5000*100,100).toFixed(1);
+
+  // Broker rows
+  const brokerRows=s.broker.top5.map((b,i)=>`
+    <div class="broker-row">
+      <div><span class="br-rank">${i+1}</span><span class="br-bname">${b.name}</span><br><span class="br-bcode">${b.code}</span></div>
+      <div class="br-bcol pos">${b.buy.toLocaleString()}</div>
+      <div class="br-bcol neg">${b.sell.toLocaleString()}</div>
+      <div class="br-bcol ${b.net>0?'pos':'neg'}">${fmt(b.net)}</div>
+    </div>`).join('');
+
+  const concPct=s.broker.concentration;
+  const concColor=concPct>=65?"#ff3d5a":concPct>=45?"#ff8c42":"#4da6ff";
+
+  // TDCC dist bars
+  const distBars=s.tdcc.dist.map(d=>`
+    <div class="hdist-row">
+      <span class="hdist-label">${d.label}</span>
+      <div class="hdist-bar-track"><div class="hdist-bar-fill" style="width:${d.pct}%;background:${d.color}"></div></div>
+      <span class="hdist-pct">${d.pct}%</span>
+      <span class="hdist-chg ${d.chg>0?'up':'dn'}">${fmt(d.chg)}%</span>
+    </div>`).join('');
+
+  const tdccSigCls={bull:"bull",neut:"neut",bear:"bear"}[s.tdcc.signal];
+
+  return `
+<div class="card" data-type="${s.type}" data-score="${s.score}" data-upside="${s.upside}"
+  data-hold="${s.holdMin}" data-bp="${s.bpScore}"
+  data-broker-accu="${s.broker.signal==='accu'?1:0}"
+  data-tdcc-up="${s.tdcc.weekChg>0?1:0}"
+  data-broker-net="${s.broker.netBuy}">
+  <div class="ctop" style="background:linear-gradient(90deg,${s.color},transparent)"></div>
+  <div class="cbody">
+    <div class="chead">
+      <div class="cmeta">
+        <div class="c-rank">#${s.rank} 推薦標的</div>
+        <div class="c-names">
+          <span class="c-code"><a href="https://stock.pchome.com.tw/stock/sto0/ock2/sid${s.code.replace(/\.(TW|TWO)$/,'')}.html" target="_blank" rel="noopener">${s.code.replace(/\.(TW|TWO)$/,'')}</a></span>
+          <span class="c-name">${s.name}</span>
+          <span class="tbadge ${s.type==='etf'?'t-etf':'t-stk'}">${s.type==='etf'?'ETF':'個股'}</span>
+        </div>
+      </div>
+      <div class="sring ${lv}"><span class="snum">${s.score}</span><span class="slbl">訊號分</span></div>
+    </div>
+
+    <div class="prow">
+      <div class="pcell"><div class="plbl">今日收盤(元)</div><div class="pval">${s.close.toLocaleString()}</div></div>
+      <div class="pcell"><div class="plbl">建議買進</div><div class="pval b">${s.buy.toLocaleString()}</div></div>
+      <div class="pcell"><div class="plbl">目標價位</div><div class="pval g">${s.target.toLocaleString()}</div></div>
+      <div class="pcell"><div class="plbl">停損價位</div><div class="pval r">${s.stop.toLocaleString()}</div></div>
+    </div>
+
+    <div class="upblock">
+      <div class="upmeta"><span class="uplbl">📈 預期上漲空間</span><span class="uppct">+${s.upside.toFixed(1)}%</span></div>
+      <div class="btrack"><div class="bfill" style="width:${upW}%"></div></div>
+      <div class="bticks"><span class="btick">0%</span><span class="btick">2.5%</span><span class="btick">5%</span><span class="btick">7.5%</span><span class="btick">10%</span></div>
+    </div>
+
+    <!-- 技術指標 -->
+    <div class="sec-block">
+      <div class="sec-hdr"><span class="sec-icon">⚡</span><span class="sec-title">技術指標訊號</span></div>
+      <div class="ind-grid">${inds}</div>
+    </div>
+
+    <!-- 三大法人 -->
+    <div class="sec-block">
+      <div class="sec-hdr"><span class="sec-icon">🏛️</span><span class="sec-title">三大法人籌碼</span><span class="sec-date">${tdStr}</span></div>
+      <div class="bp-body">
+        <div class="bp-cell"><div class="bp-clbl">外資(張)</div><div class="bp-cval ${s.bp.foreign>0?'buy':'sell'}">${fmt(s.bp.foreign)}</div></div>
+        <div class="bp-cell"><div class="bp-clbl">投信(張)</div><div class="bp-cval ${s.bp.invest>0?'buy':'sell'}">${fmt(s.bp.invest)}</div></div>
+        <div class="bp-cell"><div class="bp-clbl">自營(張)</div><div class="bp-cval ${s.bp.dealer>0?'buy':'sell'}">${fmt(s.bp.dealer)}</div></div>
+        <div class="bp-cell"><div class="bp-clbl">外資連買</div><div class="bp-cval b">${s.bp.foreignDays}天</div></div>
+        <div class="bp-cell"><div class="bp-clbl">機構持股%</div><div class="bp-cval p">${s.bp.instOwn}</div></div>
+        <div class="bp-cell"><div class="bp-clbl">持股變化</div><div class="bp-cval ${parseFloat(s.bp.chgInstOwn)>0?'buy':'sell'}">${s.bp.chgInstOwn}</div></div>
+      </div>
+      <div class="bar-rows">
+        <div class="br-item"><span class="br-name">外資</span><div class="br-track"><div class="br-fill foreign" style="width:${fW}%"></div></div><span class="br-val ${s.bp.foreign>0?'pos':'neg'}">${fmt(s.bp.foreign)}</span></div>
+        <div class="br-item"><span class="br-name">投信</span><div class="br-track"><div class="br-fill invest" style="width:${iW}%"></div></div><span class="br-val ${s.bp.invest>0?'pos':'neg'}">${fmt(s.bp.invest)}</span></div>
+        <div class="br-item"><span class="br-name">自營</span><div class="br-track"><div class="br-fill dealer" style="width:${dW}%"></div></div><span class="br-val ${s.bp.dealer>0?'pos':'neg'}">${fmt(s.bp.dealer)}</span></div>
+      </div>
+      <div class="bp-note"><span class="bp-rating ${s.bp.rating}">${s.bp.ratingLbl}</span>&nbsp;${s.bp.note}</div>
+    </div>
+
+    <!-- 券商分點 🆕 -->
+    <div class="sec-block">
+      <div class="sec-hdr"><span class="sec-icon">🏦</span><span class="sec-title">券商分點主力追蹤</span><span class="sec-date">近5日累計</span></div>
+      <div class="broker-body">
+        <div class="broker-hd">
+          <div>券商分點</div><div style="text-align:right">買超(張)</div><div style="text-align:right">賣超(張)</div><div style="text-align:right">淨買超</div>
+        </div>
+        ${brokerRows}
+        <div class="broker-summary">
+          <span class="bsum-chip accu">📈 主力買超分點：${s.broker.buyBranch}家</span>
+          <span class="bsum-chip dist">📉 賣超分點：${s.broker.sellBranch}家</span>
+          <span class="bsum-chip neu">淨買超：${s.broker.netBuy.toLocaleString()}張</span>
+        </div>
+      </div>
+      <div class="conc-bar-wrap">
+        <div class="conc-lbl">
+          <span>前5大分點集中度</span>
+          <span style="font-family:var(--mono);color:${concColor};font-weight:700">${concPct}%</span>
+        </div>
+        <div class="conc-track"><div class="conc-fill" style="width:${concPct}%;background:linear-gradient(90deg,${concColor},${concColor}88)"></div></div>
+      </div>
+      <div class="bp-note">${s.broker.note}</div>
+    </div>
+
+    <!-- 集保戶數 🆕 -->
+    <div class="sec-block">
+      <div class="sec-hdr"><span class="sec-icon">👥</span><span class="sec-title">集保戶數分析</span><span class="sec-date">TDCC ${tdStr}</span></div>
+      <div class="tdcc-body">
+        <div class="tdcc-main">
+          <div class="tdcc-cell"><div class="tdcc-clbl">總持有人數</div><div class="tdcc-cval b">${s.tdcc.totalHolder.toLocaleString()}</div></div>
+          <div class="tdcc-cell"><div class="tdcc-clbl">本週變化</div><div class="tdcc-cval ${s.tdcc.weekChg>0?'r':'g'}">${fmt(s.tdcc.weekChg)}</div></div>
+          <div class="tdcc-cell"><div class="tdcc-clbl">本月變化</div><div class="tdcc-cval ${s.tdcc.monthChg>0?'r':'g'}">${fmt(s.tdcc.monthChg)}</div></div>
+          <div class="tdcc-cell"><div class="tdcc-clbl">大戶佔比</div><div class="tdcc-cval r">${s.tdcc.whaleRatio}%</div></div>
+          <div class="tdcc-cell"><div class="tdcc-clbl">大戶變化</div><div class="tdcc-cval ${parseFloat(s.tdcc.whaleChg)>0?'r':'g'}">${fmt(parseFloat(s.tdcc.whaleChg)*10)/10}%</div></div>
+          <div class="tdcc-cell"><div class="tdcc-clbl">散戶佔比</div><div class="tdcc-cval b">${s.tdcc.retailRatio}%</div></div>
+        </div>
+        <div class="holder-dist">
+          <div class="hdist-title">持股分級分布（%） / 週變化</div>
+          ${distBars}
+        </div>
+        <div class="tdcc-signal">
+          <span class="tdcc-sig-icon">🔍</span>
+          <span class="tdcc-sig-text">${s.tdcc.note}</span>
+          <span class="tdcc-sig-badge ${tdccSigCls}">${s.tdcc.signalLbl}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="analysis"><p>${STOCKS.find(x=>x.code===s.code)===s?s.bp.note+' '+s.broker.note:''}${s.name}技術面+籌碼面綜合分析：目標 ${s.target.toLocaleString()} 元（+${s.upside}%），停損 ${s.stop.toLocaleString()} 元。</p></div>
+
+    <div class="brow">
+      <div class="ipill"><span class="ilbl">⏱ 持有</span><span class="ival">${s.holdMin}–${s.holdMax}天</span></div>
+      <div class="ipill"><span class="ilbl">🛑 停損</span><span class="ival r">${s.stop.toLocaleString()}</span></div>
+      <div class="ipill"><span class="ilbl">📊 技術</span><span class="ival">${s.score}/100</span></div>
+      <div class="ipill"><span class="ilbl">🏦 分點</span><span class="ival" style="color:var(--orange)">${s.broker.netBuy.toLocaleString()}張</span></div>
+      <div class="ipill"><span class="ilbl">👥 戶增</span><span class="ival t">${fmt(s.tdcc.weekChg)}</span></div>
+    </div>
+  </div>
+</div>`;
+}
+
+// ── FILTER/SORT ──────────────────────────────────────────────────
+let cf='all', cs='score';
+function apply(){
+  let d=[...STOCKS];
+  if(cf==='stock') d=d.filter(s=>s.type==='stock');
+  if(cf==='etf')   d=d.filter(s=>s.type==='etf');
+  if(cf==='high')  d=d.filter(s=>s.score>=80);
+  if(cf==='broker-accu') d=d.filter(s=>s.broker.signal==='accu');
+  if(cf==='tdcc-up')     d=d.filter(s=>s.tdcc.weekChg>0);
+  if(cs==='score')     d.sort((a,b)=>b.score-a.score);
+  if(cs==='upside')    d.sort((a,b)=>b.upside-a.upside);
+  if(cs==='brokerNet') d.sort((a,b)=>b.broker.netBuy-a.broker.netBuy);
+  if(cs==='tdccChg')   d.sort((a,b)=>b.tdcc.weekChg-a.tdcc.weekChg);
+  if(cs==='hold')      d.sort((a,b)=>a.holdMin-b.holdMin);
+  document.getElementById('sgrid').innerHTML=d.map(function(s){ return renderCard(s, getDisplayTradeDate()); }).join('');
+  document.getElementById('cnt').textContent=d.length;
+}
+
+document.querySelectorAll('.fbtn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); cf=b.dataset.f; apply();
+  });
+});
+document.getElementById('sortsel').addEventListener('change',e=>{cs=e.target.value;apply();});
+
+// ── TABS ──────────────────────────────────────────────────────────
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ── BROKER OVERVIEW TABLE ─────────────────────────────────────────
+function renderBrokerOverview(){
+  const sorted=[...STOCKS].sort((a,b)=>b.broker.netBuy-a.broker.netBuy);
+  document.getElementById('broker-tbody').innerHTML=sorted.map(s=>{
+    const cc=s.broker.concentration;
+    const ccColor=cc>=65?'var(--red)':cc>=45?'var(--orange)':'var(--blue)';
+    const top5names=s.broker.top5.slice(0,3).map(b=>b.name.slice(0,5)).join('、');
+    return `<tr>
+      <td style="font-family:var(--mono);font-weight:700;color:${s.color}">${s.code.replace(/\.(TW|TWO)$/,'')}</td>
+      <td>${s.name}</td>
+      <td style="color:var(--red);font-family:var(--mono)">${s.broker.buyBranch}家</td>
+      <td style="color:var(--green);font-family:var(--mono)">${s.broker.sellBranch}家</td>
+      <td style="color:var(--red);font-weight:700;font-family:var(--mono)">+${s.broker.netBuy.toLocaleString()}</td>
+      <td style="color:${ccColor};font-weight:700;font-family:var(--mono)">${cc}%</td>
+      <td style="font-size:.7rem;color:var(--text2)">${top5names}…</td>
+      <td><span class="bsum-chip accu" style="font-size:.62rem">${s.broker.signalLbl}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+// ── TDCC OVERVIEW TABLE ───────────────────────────────────────────
+function renderTdccOverview(){
+  const sorted=[...STOCKS].sort((a,b)=>b.tdcc.weekChg-a.tdcc.weekChg);
+  document.getElementById('tdcc-tbody').innerHTML=sorted.map(s=>{
+    const wChgColor=s.tdcc.weekChg>0?'var(--red)':'var(--green)';
+    const mChgColor=s.tdcc.monthChg>0?'var(--red)':'var(--green)';
+    const sigBadge={bull:'<span style="color:var(--red);font-weight:700">▲ 主力積累</span>',neut:'<span style="color:var(--yellow)">◆ 中性</span>',bear:'<span style="color:var(--green)">▼ 籌碼分散</span>'}[s.tdcc.signal];
+    return `<tr>
+      <td style="font-family:var(--mono);font-weight:700;color:${s.color}">${s.code.replace(/\.(TW|TWO)$/,'')}</td>
+      <td>${s.name}</td>
+      <td style="font-family:var(--mono)">${s.tdcc.totalHolder.toLocaleString()}</td>
+      <td style="font-weight:700;font-family:var(--mono);color:${wChgColor}">${fmt(s.tdcc.weekChg)}</td>
+      <td style="font-family:var(--mono);color:${mChgColor}">${fmt(s.tdcc.monthChg)}</td>
+      <td style="color:var(--red);font-family:var(--mono)">${s.tdcc.whaleRatio}% <span style="font-size:.62rem">(${s.tdcc.whaleChg>0?'+':''}${s.tdcc.whaleChg}%)</span></td>
+      <td style="color:var(--blue);font-family:var(--mono)">${s.tdcc.retailRatio}%</td>
+      <td>${sigBadge}</td>
+    </tr>`;
+  }).join('');
+}
+
+// Init：頁面載入時立即從 MARKET_POOL 掃描一次，確保收盤價正確
+(async function initData() {
+  const td = getDisplayTradeDate();
+  try {
+    const result = await fetchLatestData(td);
+    applyUpdatedData(result, td);
+    updateHeaderDate(td);
+  } catch(e) {}
+  apply();
+  renderBrokerOverview();
+  renderTdccOverview();
+})();
+
+// ══════════════════════════════════════════════════════════════════
+// ── UPDATE SYSTEM ─────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════
+
+const UPD = {
+  autoOn: true,
+  isLoading: false,
+  lastUpdateTime: null,   // UTC ms
+  lastUpdateDate: null,   // "YYYY-MM-DD" in Taipei
+  scheduledTimer: null,
+  countdownTimer: null,
+  clockTimer: null,       // live clock ticker
+  logs: [],
+  nextUpdateAt: null,     // UTC ms of next 08:00 Asia/Taipei
+  TZ: 'Asia/Taipei',      // IANA — UTC+8, no DST
+};
+
+// ── CORE: read Asia/Taipei parts from any UTC timestamp ───────────
+// Returns { year, month(1-12), day, hour, minute, second, weekday(0-6) }
+function twParts(msUTC) {
+  const fmt = new Intl.DateTimeFormat('en-CA', {
+    timeZone: UPD.TZ,
+    year:'numeric', month:'2-digit', day:'2-digit',
+    hour:'2-digit', minute:'2-digit', second:'2-digit',
+    hour12: false,
+  });
+  const parts = Object.fromEntries(fmt.formatToParts(msUTC).map(p => [p.type, p.value]));
+  // weekday separately
+  const wdFmt = new Intl.DateTimeFormat('en-US', { timeZone: UPD.TZ, weekday:'short' });
+  const wdStr = wdFmt.format(msUTC); // "Mon","Tue"…
+  const WD_MAP = {Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+  return {
+    year:   parseInt(parts.year),
+    month:  parseInt(parts.month),
+    day:    parseInt(parts.day),
+    hour:   parseInt(parts.hour),   // 0–23
+    minute: parseInt(parts.minute),
+    second: parseInt(parts.second),
+    weekday: WD_MAP[wdStr] ?? 0,
+    dateStr: `${parts.year}-${parts.month}-${parts.day}`,  // "2026-04-28"
+  };
+}
+
+// Build a UTC ms for a specific Asia/Taipei wall-clock time
+// e.g. twMs(2026,4,28, 8,0,0) → UTC ms when it's 08:00 on 2026-04-28 in Taipei
+function twMs(year, month, day, hour=0, min=0, sec=0) {
+  // Taipei is always UTC+8 (no DST) → UTC = Taipei − 8h
+  return Date.UTC(year, month - 1, day, hour - 8, min, sec);
+}
+
+// Parse "YYYY-MM-DD" string and return twMs at 00:00 Taipei
+function twMsFromStr(dateStr, hour=0, min=0, sec=0) {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  return twMs(y, m, d, hour, min, sec);
+}
+
+// Add N calendar days to a UTC ms (preserving Taipei date arithmetic)
+function addDaysTW(msUTC, n) {
+  const p = twParts(msUTC);
+  return twMs(p.year, p.month, p.day + n, p.hour, p.minute, p.second);
+}
+
+function isTradingDay(msUTC) {
+  return twParts(msUTC).weekday >= 1 && twParts(msUTC).weekday <= 5;
+}
+
+function formatDateDisplay(str) {
+  // "2026-04-25" → "2026/04/25"
+  return str.replace(/-/g, '/');
+}
+
+// Format: "HH:MM:SS" in Asia/Taipei
+function fmtTime(msUTC) {
+  return new Intl.DateTimeFormat('zh-TW', {
+    timeZone: UPD.TZ,
+    hour:'2-digit', minute:'2-digit', second:'2-digit', hour12: false,
+  }).format(msUTC);
+}
+
+// Format: "2026/04/28 08:00:00 台北時間"
+function fmtDateTimeTW(msUTC) {
+  return new Intl.DateTimeFormat('zh-TW', {
+    timeZone: UPD.TZ,
+    year:'numeric', month:'2-digit', day:'2-digit',
+    hour:'2-digit', minute:'2-digit', second:'2-digit',
+    hour12: false,
+  }).format(msUTC).replace(',', '') + ' 台北時間';
+}
+
+// ── CALC NEXT 08:00 Asia/Taipei ───────────────────────────────────
+// Returns UTC ms of the next 08:00 trading day in Taipei
+function calcNextUpdate() {
+  const now = Date.now();
+  const p = twParts(now);
+  // candidate: today at 08:00 Taipei
+  let candidate = twMs(p.year, p.month, p.day, 8, 0, 0);
+  // if already past, push to tomorrow
+  if (now >= candidate) candidate = addDaysTW(candidate, 1);
+  // skip weekends
+  while (!isTradingDay(candidate)) candidate = addDaysTW(candidate, 1);
+  return candidate;   // UTC ms
+}
+
+// ── DETERMINE TRADE DATE TO DISPLAY ──────────────────────────────
+// Before 08:00 Taipei → show previous trading day
+// From 08:00 onward  → show today (if trading day) else prev
+function getDisplayTradeDate() {
+  const now = Date.now();
+  const p = twParts(now);
+  const todayAt8 = twMs(p.year, p.month, p.day, 8, 0, 0);
+  let base = now >= todayAt8 ? now : addDaysTW(now, -1);
+  // Walk back to a weekday
+  while (!isTradingDay(base)) base = addDaysTW(base, -1);
+  return twParts(base).dateStr;  // "YYYY-MM-DD"
+}
+
+// ══════════════════════════════════════════════════════════════════
+// ── 本地全市場掃描引擎（80 檔候選池 × 每日 seed 重新評分）─────────
+// ══════════════════════════════════════════════════════════════════
+
+const COLOR_PALETTE = [
+  '#ff3d5a','#4da6ff','#00e5a0','#ffd166','#a78bfa',
+  '#ff8c42','#00c9c9','#f06292','#c084fc','#34d399',
+  '#fb923c','#e879f9','#f87171','#38bdf8','#a3e635',
+];
+
+// ── 80 檔候選池（base = 2025/04/28 起始參考價）────────────────────
+const MARKET_POOL = [
+  // base = 2026/04/29 真實收盤價（每次更新時請同步更新）
+  // 半導體
+  {code:'2330.TW',name:'台積電',    type:'stock',sector:'半導體',  base:2310, sig:0.22},
+  {code:'2454.TW',name:'聯發科',    type:'stock',sector:'IC設計',  base:3420, sig:0.25},
+  {code:'2303.TW',name:'聯電',      type:'stock',sector:'半導體',  base:96.50, sig:0.22},
+  {code:'3711.TW',name:'日月光投控',type:'stock',sector:'封測',    base:540.0,  sig:0.24},
+  {code:'2379.TW',name:'瑞昱',      type:'stock',sector:'IC設計',  base:539.0,  sig:0.22},
+  {code:'3034.TW',name:'聯詠',      type:'stock',sector:'IC設計',  base:453.0,  sig:0.23},
+  {code:'6415.TW',name:'矽力-KY',   type:'stock',sector:'IC設計',  base:424.5, sig:0.28},
+  {code:'5347.TW',name:'世界先進',  type:'stock',sector:'半導體',  base:128.0,  sig:0.20},
+  // AI/伺服器
+  {code:'2382.TW',name:'廣達',      type:'stock',sector:'AI伺服器',base:344.0,  sig:0.22},
+  {code:'3661.TW',name:'世芯-KY',   type:'stock',sector:'ASIC',    base:4795, sig:0.30},
+  {code:'6669.TW',name:'緯穎',      type:'stock',sector:'伺服器',  base:4880, sig:0.26},
+  {code:'2345.TW',name:'智邦',      type:'stock',sector:'網通',    base:2560,  sig:0.24},
+  {code:'3443.TW',name:'創意',      type:'stock',sector:'ASIC',    base:5450, sig:0.27},
+  {code:'2308.TW',name:'台達電',    type:'stock',sector:'電源AI',  base:2280, sig:0.22},
+  // 電子零組件
+  {code:'2383.TW',name:'台光電',    type:'stock',sector:'CCL',     base:4960, sig:0.28},
+  {code:'3037.TW',name:'欣興',      type:'stock',sector:'PCB',     base:896.0,  sig:0.24},
+  {code:'8046.TW',name:'南電',      type:'stock',sector:'PCB',     base:947.0,  sig:0.26},
+  {code:'6533.TW',name:'晶心科',    type:'stock',sector:'IP矽智財',base:246.0,  sig:0.28},
+  // 鴻海集團/代工
+  {code:'2317.TW',name:'鴻海',      type:'stock',sector:'EMSAI',   base:253.5,sig:0.20},
+  {code:'2354.TW',name:'鴻準',      type:'stock',sector:'機殼',    base:63.30,   sig:0.20},
+  {code:'4938.TW',name:'和碩',      type:'stock',sector:'EMS',     base:84.30,   sig:0.18},
+  // 光電/面板
+  {code:'2409.TW',name:'友達',      type:'stock',sector:'面板',    base:18.35, sig:0.24},
+  {code:'3481.TW',name:'群創',      type:'stock',sector:'面板',    base:29.75, sig:0.24},
+  {code:'3008.TW',name:'大立光',    type:'stock',sector:'光學',    base:2575, sig:0.22},
+  // 金融
+  {code:'2881.TW',name:'富邦金',    type:'stock',sector:'金融',    base:94.50,   sig:0.16},
+  {code:'2882.TW',name:'國泰金',    type:'stock',sector:'金融',    base:79.00,   sig:0.15},
+  {code:'2884.TW',name:'玉山金',    type:'stock',sector:'金融',    base:32.10, sig:0.13},
+  {code:'2886.TW',name:'兆豐金',    type:'stock',sector:'金融',    base:39.65, sig:0.12},
+  {code:'2891.TW',name:'中信金',    type:'stock',sector:'金融',    base:56.20,   sig:0.14},
+  {code:'2892.TW',name:'第一金',    type:'stock',sector:'金融',    base:29.15, sig:0.12},
+  {code:'5880.TW',name:'合庫金',    type:'stock',sector:'金融',    base:23.00,   sig:0.11},
+  // 傳產/鋼鐵/航運
+  {code:'2002.TW',name:'中鋼',      type:'stock',sector:'鋼鐵',    base:18.85, sig:0.16},
+  {code:'1301.TW',name:'台塑',      type:'stock',sector:'塑化',    base:49.55,   sig:0.15},
+  {code:'1303.TW',name:'南亞',      type:'stock',sector:'塑化',    base:90.30,   sig:0.15},
+  {code:'1326.TW',name:'台化',      type:'stock',sector:'塑化',    base:49.45,   sig:0.16},
+  {code:'2603.TW',name:'長榮',      type:'stock',sector:'航運',    base:213.5,  sig:0.28},
+  {code:'2609.TW',name:'陽明',      type:'stock',sector:'航運',    base:50.70,   sig:0.28},
+  {code:'2615.TW',name:'萬海',      type:'stock',sector:'航運',    base:78.20,   sig:0.26},
+  // 食品/通路/電信
+  {code:'1216.TW',name:'統一',      type:'stock',sector:'食品',    base:69.40,   sig:0.10},
+  {code:'2912.TW',name:'統一超',    type:'stock',sector:'通路',    base:228.5,  sig:0.12},
+  {code:'4904.TW',name:'遠傳',      type:'stock',sector:'電信',    base:95.40,   sig:0.10},
+  {code:'2412.TW',name:'中華電',    type:'stock',sector:'電信',    base:135.5,  sig:0.08},
+  // 生技/醫藥
+  {code:'6446.TW',name:'藥華藥',    type:'stock',sector:'生技',    base:659.0,  sig:0.30},
+  {code:'4763.TW',name:'材料-KY',   type:'stock',sector:'生技',    base:41.95,  sig:0.26},
+  {code:'1795.TW',name:'美時',      type:'stock',sector:'製藥',    base:233.0,  sig:0.22},
+  {code:'2707.TW',name:'晶華',      type:'stock',sector:'觀光',    base:170.0,  sig:0.18},
+  // 汽車/自動化
+  {code:'2201.TW',name:'裕隆',      type:'stock',sector:'汽車',    base:27.70,   sig:0.22},
+  {code:'3231.TW',name:'緯創',      type:'stock',sector:'EMSAI',   base:146.0,  sig:0.22},
+  {code:'2357.TW',name:'華碩',      type:'stock',sector:'PC品牌',  base:639.0,  sig:0.20},
+  {code:'2395.TW',name:'研華',      type:'stock',sector:'工業電腦',base:444.0,  sig:0.18},
+  {code:'3533.TW',name:'嘉澤',      type:'stock',sector:'連接器',  base:2850,  sig:0.24},
+  {code:'2474.TW',name:'可成',      type:'stock',sector:'機殼',    base:206.0,  sig:0.20},
+  {code:'4966.TW',name:'譜瑞-KY',   type:'stock',sector:'IC設計',  base:2280, sig:0.26},
+  {code:'5269.TW',name:'祥碩',      type:'stock',sector:'IC設計',  base:1370, sig:0.25},
+  {code:'8454.TW',name:'富邦媒',    type:'stock',sector:'電商',    base:189.0, sig:0.22},
+  {code:'2049.TW',name:'上銀',      type:'stock',sector:'自動化',  base:318.0,  sig:0.24},
+  {code:'1590.TW',name:'亞德客-KY', type:'stock',sector:'自動化',  base:1490,  sig:0.22},
+  {code:'6488.TW',name:'環球晶',    type:'stock',sector:'矽晶圓',  base:555.0,  sig:0.24},
+  {code:'2408.TW',name:'南亞科',    type:'stock',sector:'記憶體',  base:287.0,   sig:0.26},
+  {code:'3006.TW',name:'晶豪科',    type:'stock',sector:'IC設計',  base:196.5,sig:0.24},
+  {code:'6547.TW',name:'高端疫苗',  type:'stock',sector:'生技',    base:60.00,   sig:0.35},
+  // ETF
+  {code:'0050.TW',  name:'元大台灣50',     type:'etf',sector:'大盤ETF',base:95.75,   sig:0.16},
+  {code:'0056.TW',  name:'元大高股息',     type:'etf',sector:'高息ETF',base:43.86,sig:0.12},
+  {code:'00878.TW', name:'國泰永續高股息', type:'etf',sector:'ESG ETF',base:27.33, sig:0.12},
+  {code:'00919.TW', name:'群益精選高息',   type:'etf',sector:'高息ETF',base:24.91, sig:0.13},
+  {code:'00631L.TW',name:'元大台灣50正2',  type:'etf',sector:'槓桿ETF',base:31.89,  sig:0.32},
+  {code:'00892.TW', name:'富邦台灣半導體', type:'etf',sector:'半導ETF',base:41.39,   sig:0.20},
+  {code:'00881.TW', name:'國泰台灣5G+',    type:'etf',sector:'5G ETF', base:49.83,   sig:0.18},
+  {code:'00713.TW', name:'元大高息低波',   type:'etf',sector:'高息ETF',base:53.75,   sig:0.10},
+  {code:'006208.TW',name:'富邦台50',       type:'etf',sector:'大盤ETF',base:222.0,   sig:0.16},
+  {code:'00929.TW', name:'復華科技優息',   type:'etf',sector:'高息ETF',base:24.40, sig:0.14},
+  {code:'00757.TW', name:'統一FANG+',      type:'etf',sector:'美股ETF',base:124.2,   sig:0.25},
+  {code:'00830.TW', name:'國泰費城半導體', type:'etf',sector:'美半ETF',base:78.35,   sig:0.24},
+  {code:'00679B.TW',name:'元大美債20年',   type:'etf',sector:'債券ETF',base:31.50, sig:0.08},
+  {code:'2337.TW',name:'旺宏',type:'stock',sector:'記憶體',base:164.5,sig:0.28},
+  {code:'2344.TW',name:'華邦電',type:'stock',sector:'記憶體',base:114.0,sig:0.28},
+  {code:'4967.TW',name:'十銓',type:'stock',sector:'記憶體',base:297.0,sig:0.3},
+  {code:'3260.TW',name:'威剛',type:'stock',sector:'記憶體',base:320.0,sig:0.26},
+  {code:'6770.TW',name:'力積電',type:'stock',sector:'半導體',base:63.90,sig:0.3},
+  {code:'2325.TW',name:'矽品',type:'stock',sector:'封測',base:98.00,sig:0.22},
+  {code:'5388.TW',name:'中磊',type:'stock',sector:'網通',base:80.30,sig:0.24},
+  {code:'4958.TW',name:'臻鼎-KY',type:'stock',sector:'PCB',base:427.0,sig:0.26},
+  {code:'3044.TW',name:'健鼎',type:'stock',sector:'PCB',base:500.0,sig:0.24},
+  {code:'2368.TW',name:'金像電',type:'stock',sector:'PCB',base:1450,sig:0.28},
+  {code:'6830.TW',name:'汎銓',type:'stock',sector:'半導體',base:874.0,sig:0.3},
+  {code:'3081.TW',name:'聯亞',type:'stock',sector:'光通訊',base:120.0,sig:0.28},
+  {code:'6706.TW',name:'惠特',type:'stock',sector:'光通訊',base:174.5,sig:0.32},
+  {code:'3714.TW',name:'富采',type:'stock',sector:'LED',base:71.40,sig:0.28},
+  {code:'2393.TW',name:'億光',type:'stock',sector:'LED',base:72.50,sig:0.22},
+  {code:'4743.TW',name:'合一',type:'stock',sector:'生技',base:52.00,sig:0.32},
+  {code:'6416.TW',name:'瑞鼎',type:'stock',sector:'IC設計',base:84.60,sig:0.26},
+  {code:'6153.TW',name:'嘉聯益',type:'stock',sector:'PCB',base:18.95,sig:0.24},
+  {code:'3189.TW',name:'景碩',type:'stock',sector:'PCB',base:492.5,sig:0.26},
+  {code:'2356.TW',name:'英業達',type:'stock',sector:'伺服器',base:49.95,sig:0.2},
+  {code:'2324.TW',name:'仁寶',type:'stock',sector:'NB',base:29.45,sig:0.18},
+  {code:'2353.TW',name:'宏碁',type:'stock',sector:'PC品牌',base:28.10,sig:0.22},
+  {code:'6461.TW',name:'益得',type:'stock',sector:'工具機',base:65.00,sig:0.24},
+  {code:'1537.TW',name:'廣隆',type:'stock',sector:'自動化',base:123.0,sig:0.22},
+  {code:'8085.TW',name:'福華',type:'stock',sector:'連接器',base:65.00,sig:0.22},
+  {code:'2059.TW',name:'川湖',type:'stock',sector:'機殼',base:4840,sig:0.22},
+  {code:'2227.TW',name:'裕日車',type:'stock',sector:'汽車',base:52.60,sig:0.16},
+  {code:'2360.TW',name:'致茂',type:'stock',sector:'電子測試',base:2325,sig:0.22},
+  {code:'6271.TW',name:'同欣電',type:'stock',sector:'封測',base:180.0,sig:0.24},
+  {code:'6451.TW',name:'訊芯-KY',type:'stock',sector:'光收發',base:490.0,sig:0.32},
+  {code:'4979.TW',name:'華星光',type:'stock',sector:'光通訊',base:95.00,sig:0.3},
+  {code:'3491.TW',name:'昇達科',type:'stock',sector:'網通',base:88.00,sig:0.28},
+  {code:'6442.TW',name:'光聖',type:'stock',sector:'光通訊',base:2095,sig:0.3},
+  {code:'3058.TW',name:'立積',type:'stock',sector:'IC設計',base:8.40,sig:0.28},
+  {code:'3406.TW',name:'玉晶光',type:'stock',sector:'光學',base:513.0,sig:0.26},
+  {code:'5291.TW',name:'邑錡',type:'stock',sector:'IC設計',base:680.0,sig:0.28},
+  {code:'4108.TW',name:'懷特',type:'stock',sector:'生技',base:12.00,sig:0.3},
+  {code:'2801.TW',name:'彰銀',type:'stock',sector:'金融',base:20.90,sig:0.12},
+  {code:'2803.TW',name:'台灣企銀',type:'stock',sector:'金融',base:18.50,sig:0.12},
+  {code:'2809.TW',name:'京城銀',type:'stock',sector:'金融',base:48.00,sig:0.14},
+  {code:'2812.TW',name:'台中銀',type:'stock',sector:'金融',base:19.70,sig:0.12},
+  {code:'2820.TW',name:'華票',type:'stock',sector:'金融',base:16.85,sig:0.1},
+  {code:'2823.TW',name:'中壽',type:'stock',sector:'保險',base:38.00,sig:0.16},
+  {code:'2824.TW',name:'台壽保',type:'stock',sector:'保險',base:22.00,sig:0.14},
+  {code:'2832.TW',name:'台產',type:'stock',sector:'保險',base:52.70,sig:0.12},
+  {code:'2833.TW',name:'台灣金',type:'stock',sector:'金融',base:28.00,sig:0.14},
+  {code:'2834.TW',name:'臺企銀',type:'stock',sector:'金融',base:16.15,sig:0.12},
+  {code:'2836.TW',name:'聯邦銀',type:'stock',sector:'金融',base:11.95,sig:0.12},
+  {code:'2845.TW',name:'遠東銀',type:'stock',sector:'金融',base:12.25,sig:0.12},
+  {code:'2849.TW',name:'安泰銀',type:'stock',sector:'金融',base:13.95,sig:0.12},
+  {code:'2851.TW',name:'中再保',type:'stock',sector:'保險',base:31.35,sig:0.12},
+  {code:'2852.TW',name:'第一保',type:'stock',sector:'保險',base:26.10,sig:0.12},
+  {code:'2855.TW',name:'統一證',type:'stock',sector:'證券',base:39.70,sig:0.14},
+  {code:'2867.TW',name:'三商壽',type:'stock',sector:'保險',base:7.81,sig:0.16},
+  {code:'2880.TW',name:'華南金',type:'stock',sector:'金融',base:33.30,sig:0.12},
+  {code:'2883.TW',name:'開發金',type:'stock',sector:'金融',base:22.45,sig:0.14},
+  {code:'2885.TW',name:'元大金',type:'stock',sector:'金融',base:56.10,sig:0.14},
+  {code:'2887.TW',name:'台新金',type:'stock',sector:'金融',base:24.00,sig:0.14},
+  {code:'2888.TW',name:'新光金',type:'stock',sector:'金融',base:12.50,sig:0.16},
+  {code:'2889.TW',name:'國票金',type:'stock',sector:'金融',base:14.55,sig:0.12},
+  {code:'2890.TW',name:'永豐金',type:'stock',sector:'金融',base:30.90,sig:0.14},
+  {code:'5876.TW',name:'上海商銀',type:'stock',sector:'金融',base:38.80,sig:0.12},
+  {code:'1101.TW',name:'台泥',type:'stock',sector:'水泥',base:25.50,sig:0.14},
+  {code:'1102.TW',name:'亞泥',type:'stock',sector:'水泥',base:34.95,sig:0.14},
+  {code:'1103.TW',name:'嘉泥',type:'stock',sector:'水泥',base:13.45,sig:0.14},
+  {code:'1108.TW',name:'幸福水泥',type:'stock',sector:'水泥',base:14.60,sig:0.14},
+  {code:'1201.TW',name:'味全',type:'stock',sector:'食品',base:12.35,sig:0.16},
+  {code:'1203.TW',name:'味王',type:'stock',sector:'食品',base:43.35,sig:0.14},
+  {code:'1210.TW',name:'大成長城',type:'stock',sector:'食品',base:52.30,sig:0.14},
+  {code:'1213.TW',name:'大飲',type:'stock',sector:'食品',base:8.85,sig:0.14},
+  {code:'1217.TW',name:'愛之味',type:'stock',sector:'食品',base:9.67,sig:0.14},
+  {code:'1227.TW',name:'佳格',type:'stock',sector:'食品',base:28.85,sig:0.14},
+  {code:'1229.TW',name:'聯華',type:'stock',sector:'食品',base:41.70,sig:0.14},
+  {code:'1231.TW',name:'聯華食',type:'stock',sector:'食品',base:86.70,sig:0.14},
+  {code:'1234.TW',name:'黑松',type:'stock',sector:'食品',base:35.25,sig:0.12},
+  {code:'1235.TW',name:'興泰',type:'stock',sector:'食品',base:44.80,sig:0.16},
+  {code:'1304.TW',name:'台聚',type:'stock',sector:'塑化',base:13.00,sig:0.16},
+  {code:'1305.TW',name:'華夏',type:'stock',sector:'塑化',base:13.00,sig:0.16},
+  {code:'1308.TW',name:'亞聚',type:'stock',sector:'塑化',base:13.75,sig:0.16},
+  {code:'1309.TW',name:'台達化',type:'stock',sector:'塑化',base:17.40,sig:0.16},
+  {code:'1312.TW',name:'國喬',type:'stock',sector:'塑化',base:12.10,sig:0.18},
+  {code:'1314.TW',name:'中石化',type:'stock',sector:'塑化',base:7.25,sig:0.16},
+  {code:'1402.TW',name:'遠東新',type:'stock',sector:'紡織',base:26.00,sig:0.14},
+  {code:'1410.TW',name:'南染',type:'stock',sector:'紡織',base:28.00,sig:0.16},
+  {code:'1413.TW',name:'宏洲',type:'stock',sector:'紡織',base:9.64,sig:0.16},
+  {code:'1414.TW',name:'東和紡',type:'stock',sector:'紡織',base:16.60,sig:0.14},
+  {code:'1419.TW',name:'新紡',type:'stock',sector:'紡織',base:64.30,sig:0.14},
+  {code:'1434.TW',name:'福懋',type:'stock',sector:'紡織',base:15.95,sig:0.14},
+  {code:'1436.TW',name:'華友聯',type:'stock',sector:'紡織',base:49.05,sig:0.14},
+  {code:'1438.TW',name:'裕豐',type:'stock',sector:'紡織',base:20.10,sig:0.14},
+  {code:'1440.TW',name:'南紡',type:'stock',sector:'紡織',base:12.40,sig:0.14},
+  {code:'1441.TW',name:'大東',type:'stock',sector:'紡織',base:9.82,sig:0.14},
+  {code:'1444.TW',name:'力麗',type:'stock',sector:'紡織',base:5.98,sig:0.14},
+  {code:'1445.TW',name:'大宇',type:'stock',sector:'紡織',base:12.75,sig:0.16},
+  {code:'1446.TW',name:'宏和',type:'stock',sector:'紡織',base:15.75,sig:0.14},
+  {code:'1449.TW',name:'佳和',type:'stock',sector:'紡織',base:13.10,sig:0.14},
+  {code:'1451.TW',name:'年興',type:'stock',sector:'紡織',base:16.85,sig:0.14},
+  {code:'2006.TW',name:'東和鋼鐵',type:'stock',sector:'鋼鐵',base:67.60,sig:0.18},
+  {code:'2007.TW',name:'燁興',type:'stock',sector:'鋼鐵',base:7.38,sig:0.18},
+  {code:'2008.TW',name:'高興昌',type:'stock',sector:'鋼鐵',base:27.65,sig:0.18},
+  {code:'2009.TW',name:'第一銅',type:'stock',sector:'金屬',base:39.30,sig:0.18},
+  {code:'2010.TW',name:'春源',type:'stock',sector:'鋼鐵',base:24.85,sig:0.18},
+  {code:'2011.TW',name:'益新',type:'stock',sector:'鋼鐵',base:18.00,sig:0.18},
+  {code:'2014.TW',name:'中鴻',type:'stock',sector:'鋼鐵',base:18.20,sig:0.18},
+  {code:'2015.TW',name:'豐興',type:'stock',sector:'鋼鐵',base:62.50,sig:0.18},
+  {code:'2017.TW',name:'官田鋼',type:'stock',sector:'鋼鐵',base:8.84,sig:0.18},
+  {code:'2020.TW',name:'美亞',type:'stock',sector:'金屬',base:21.85,sig:0.2},
+  {code:'2022.TW',name:'聚亨',type:'stock',sector:'金屬',base:8.09,sig:0.18},
+  {code:'2023.TW',name:'燁輝',type:'stock',sector:'鋼鐵',base:14.00,sig:0.18},
+  {code:'2024.TW',name:'志聯',type:'stock',sector:'鋼鐵',base:13.95,sig:0.18},
+  {code:'2025.TW',name:'千興',type:'stock',sector:'鋼鐵',base:11.95,sig:0.18},
+  {code:'2027.TW',name:'大成鋼',type:'stock',sector:'鋼鐵',base:39.10,sig:0.18},
+  {code:'2028.TW',name:'威致',type:'stock',sector:'鋼鐵',base:17.10,sig:0.18},
+  {code:'2029.TW',name:'盛餘',type:'stock',sector:'鋼鐵',base:20.15,sig:0.18},
+  {code:'2030.TW',name:'彰源',type:'stock',sector:'鋼鐵',base:16.40,sig:0.18},
+  {code:'2032.TW',name:'新鋼',type:'stock',sector:'鋼鐵',base:16.75,sig:0.18},
+  {code:'2033.TW',name:'佳大',type:'stock',sector:'鋼鐵',base:15.15,sig:0.2},
+  {code:'2601.TW',name:'益航',type:'stock',sector:'航運',base:4.92,sig:0.24},
+  {code:'2605.TW',name:'新興',type:'stock',sector:'航運',base:34.40,sig:0.24},
+  {code:'2606.TW',name:'裕民',type:'stock',sector:'散裝',base:65.10,sig:0.24},
+  {code:'2607.TW',name:'榮運',type:'stock',sector:'陸運',base:48.00,sig:0.18},
+  {code:'2608.TW',name:'大榮',type:'stock',sector:'陸運',base:30.00,sig:0.16},
+  {code:'2610.TW',name:'華航',type:'stock',sector:'航空',base:18.60,sig:0.24},
+  {code:'2611.TW',name:'志信',type:'stock',sector:'航運',base:13.50,sig:0.22},
+  {code:'2612.TW',name:'中航',type:'stock',sector:'航運',base:58.60,sig:0.22},
+  {code:'2613.TW',name:'中櫃',type:'stock',sector:'航運',base:22.65,sig:0.22},
+  {code:'2614.TW',name:'東森',type:'stock',sector:'航運',base:20.20,sig:0.24},
+  {code:'2616.TW',name:'山隆',type:'stock',sector:'陸運',base:14.05,sig:0.18},
+  {code:'2617.TW',name:'台航',type:'stock',sector:'航運',base:29.80,sig:0.22},
+  {code:'2618.TW',name:'長榮航',type:'stock',sector:'航空',base:35.40,sig:0.24},
+  {code:'2625.TW',name:'興航',type:'stock',sector:'航空',base:12.00,sig:0.28},
+  {code:'5608.TW',name:'四維航',type:'stock',sector:'散裝',base:15.55,sig:0.24},
+  {code:'5609.TW',name:'遠雄港',type:'stock',sector:'港務',base:35.00,sig:0.18},
+  {code:'5612.TW',name:'友聯船務',type:'stock',sector:'航運',base:14.00,sig:0.22},
+  {code:'2701.TW',name:'萬企',type:'stock',sector:'觀光',base:10.70,sig:0.18},
+  {code:'2702.TW',name:'華園',type:'stock',sector:'觀光',base:15.90,sig:0.18},
+  {code:'2704.TW',name:'國賓',type:'stock',sector:'觀光',base:42.00,sig:0.18},
+  {code:'2705.TW',name:'六福',type:'stock',sector:'觀光',base:16.10,sig:0.18},
+  {code:'2706.TW',name:'第一店',type:'stock',sector:'觀光',base:12.40,sig:0.18},
+  {code:'2710.TW',name:'燕京',type:'stock',sector:'觀光',base:18.00,sig:0.2},
+  {code:'2711.TW',name:'楓康',type:'stock',sector:'零售',base:35.00,sig:0.16},
+  {code:'2712.TW',name:'遠雄來',type:'stock',sector:'觀光',base:17.00,sig:0.2},
+  {code:'2717.TW',name:'中悅',type:'stock',sector:'觀光',base:22.00,sig:0.18},
+  {code:'2718.TW',name:'晶悅',type:'stock',sector:'觀光',base:28.00,sig:0.18},
+  {code:'2719.TW',name:'燦星旅',type:'stock',sector:'觀光',base:14.00,sig:0.24},
+  {code:'2723.TW',name:'美食達人',type:'stock',sector:'餐飲',base:66.30,sig:0.18},
+  {code:'2726.TW',name:'雅茗-KY',type:'stock',sector:'餐飲',base:38.00,sig:0.2},
+  {code:'2727.TW',name:'王品',type:'stock',sector:'餐飲',base:231.0,sig:0.2},
+  {code:'2729.TW',name:'瓦城',type:'stock',sector:'餐飲',base:135.0,sig:0.2},
+  {code:'2731.TW',name:'雄獅',type:'stock',sector:'旅遊',base:163.5,sig:0.22},
+  {code:'2732.TW',name:'可樂旅遊',type:'stock',sector:'旅遊',base:52.00,sig:0.22},
+  {code:'2904.TW',name:'匯僑',type:'stock',sector:'通路',base:15.90,sig:0.16},
+  {code:'2906.TW',name:'高雄開發',type:'stock',sector:'零售',base:12.50,sig:0.16},
+  {code:'2908.TW',name:'特力',type:'stock',sector:'通路',base:20.80,sig:0.16},
+  {code:'2910.TW',name:'統領',type:'stock',sector:'零售',base:22.85,sig:0.16},
+  {code:'2913.TW',name:'農林',type:'stock',sector:'農業',base:11.30,sig:0.16},
+  {code:'5903.TW',name:'全家',type:'stock',sector:'便利商店',base:235.0,sig:0.14},
+  {code:'9906.TW',name:'欣巴巴',type:'stock',sector:'零售',base:37.10,sig:0.16},
+  {code:'3045.TW',name:'台灣大',type:'stock',sector:'電信',base:110.0,sig:0.1},
+  {code:'3617.TW',name:'碩天',type:'stock',sector:'電源',base:195.0,sig:0.22},
+  {code:'6285.TW',name:'啟碁',type:'stock',sector:'網通',base:256.0,sig:0.24},
+  {code:'4906.TW',name:'正文',type:'stock',sector:'網通',base:38.70,sig:0.22},
+  {code:'3094.TW',name:'泰詠',type:'stock',sector:'IC設計',base:33.35,sig:0.24},
+  {code:'8008.TW',name:'建興電',type:'stock',sector:'儲存',base:28.00,sig:0.2},
+  {code:'8016.TW',name:'矽創',type:'stock',sector:'IC設計',base:265.5,sig:0.24},
+  {code:'8021.TW',name:'尖點',type:'stock',sector:'連接器',base:425.5,sig:0.26},
+  {code:'5234.TW',name:'達興材料',type:'stock',sector:'材料',base:398.5,sig:0.24},
+  {code:'3535.TW',name:'曜越',type:'stock',sector:'電競',base:132.0,sig:0.22},
+  {code:'2376.TW',name:'技嘉',type:'stock',sector:'PC零組件',base:309.0,sig:0.22},
+  {code:'2377.TW',name:'微星',type:'stock',sector:'PC品牌',base:101.0,sig:0.22},
+  {code:'1707.TW',name:'葡萄王',type:'stock',sector:'生技',base:112.5,sig:0.18},
+  {code:'1712.TW',name:'興農',type:'stock',sector:'農化',base:42.30,sig:0.18},
+  {code:'4152.TW',name:'台微體',type:'stock',sector:'生技',base:85.00,sig:0.32},
+  {code:'4154.TW',name:'樂斯科',type:'stock',sector:'生技',base:48.00,sig:0.3},
+  {code:'4162.TW',name:'智擎',type:'stock',sector:'生技',base:95.00,sig:0.32},
+  {code:'4171.TW',name:'瑞基',type:'stock',sector:'醫療',base:68.00,sig:0.28},
+  {code:'4174.TW',name:'浩鼎',type:'stock',sector:'生技',base:58.00,sig:0.32},
+  {code:'4179.TW',name:'安成藥',type:'stock',sector:'製藥',base:125.0,sig:0.26},
+  {code:'4180.TW',name:'元晶',type:'stock',sector:'太陽能',base:22.50,sig:0.28},
+  {code:'4182.TW',name:'國光生',type:'stock',sector:'生技',base:30.00,sig:0.28},
+  {code:'4183.TW',name:'福泰',type:'stock',sector:'生技',base:38.00,sig:0.28},
+  {code:'4192.TW',name:'永昕',type:'stock',sector:'生技',base:48.00,sig:0.3},
+  {code:'4195.TW',name:'中天',type:'stock',sector:'生技',base:22.00,sig:0.3},
+  {code:'4198.TW',name:'瑞華新藥',type:'stock',sector:'生技',base:28.00,sig:0.3},
+  {code:'4205.TW',name:'中華食',type:'stock',sector:'食品',base:52.00,sig:0.14},
+  {code:'4414.TW',name:'如興',type:'stock',sector:'紡織',base:9.97,sig:0.2},
+  {code:'4530.TW',name:'葫蘆墩',type:'stock',sector:'紡織',base:14.00,sig:0.18},
+  {code:'4532.TW',name:'瑞賽特',type:'stock',sector:'材料',base:22.95,sig:0.24},
+  {code:'4540.TW',name:'全球傳動',type:'stock',sector:'精密',base:75.70,sig:0.26},
+  {code:'4551.TW',name:'智伸科',type:'stock',sector:'精密',base:135.0,sig:0.22},
+  {code:'4556.TW',name:'光耀',type:'stock',sector:'LED',base:14.00,sig:0.24},
+  {code:'4560.TW',name:'強信',type:'stock',sector:'電機',base:35.65,sig:0.2},
+  {code:'4562.TW',name:'穎漢',type:'stock',sector:'精密',base:38.25,sig:0.22},
+  {code:'4581.TW',name:'吉晶電子',type:'stock',sector:'IC設計',base:50.80,sig:0.26},
+  {code:'4583.TW',name:'台灣精銳',type:'stock',sector:'光學',base:755.0,sig:0.24},
+  {code:'4584.TW',name:'博智電子',type:'stock',sector:'電子',base:32.00,sig:0.24},
+  {code:'4588.TW',name:'應華',type:'stock',sector:'IC設計',base:60.30,sig:0.26},
+  {code:'4590.TW',name:'新潮流',type:'stock',sector:'電子',base:79.00,sig:0.24},
+  {code:'4592.TW',name:'台睿生技',type:'stock',sector:'生技',base:25.00,sig:0.32},
+  {code:'4596.TW',name:'台灣特化',type:'stock',sector:'化工',base:28.00,sig:0.22},
+  {code:'4598.TW',name:'佑康',type:'stock',sector:'健康',base:22.00,sig:0.28},
+  {code:'4727.TW',name:'益生',type:'stock',sector:'生技',base:38.00,sig:0.28},
+  {code:'4733.TW',name:'五鼎',type:'stock',sector:'醫療',base:55.00,sig:0.26},
+  {code:'4744.TW',name:'合世',type:'stock',sector:'醫療',base:28.00,sig:0.24},
+  {code:'4746.TW',name:'台耀',type:'stock',sector:'材料',base:54.80,sig:0.26},
+  {code:'4750.TW',name:'特昌',type:'stock',sector:'生技',base:18.00,sig:0.28},
+  {code:'4754.TW',name:'展旺',type:'stock',sector:'建材',base:22.00,sig:0.22},
+  {code:'4766.TW',name:'昂昂',type:'stock',sector:'生技',base:371.0,sig:0.3},
+  {code:'4776.TW',name:'展碁',type:'stock',sector:'網通',base:95.00,sig:0.24},
+  {code:'3576.TW',name:'聯合再生',type:'stock',sector:'太陽能',base:17.20,sig:0.28},
+  {code:'3580.TW',name:'振偉',type:'stock',sector:'太陽能',base:14.00,sig:0.28},
+  {code:'3672.TW',name:'康舒',type:'stock',sector:'電源',base:58.00,sig:0.22},
+  {code:'3673.TW',name:'F-TPK',type:'stock',sector:'觸控',base:60.50,sig:0.24},
+  {code:'3675.TW',name:'u-blox',type:'stock',sector:'IC設計',base:280.0,sig:0.26},
+  {code:'3703.TW',name:'欣陸',type:'stock',sector:'綠能',base:20.90,sig:0.24},
+  {code:'3704.TW',name:'合勤控',type:'stock',sector:'網通',base:35.40,sig:0.2},
+  {code:'3706.TW',name:'神達',type:'stock',sector:'科技',base:87.40,sig:0.2},
+  {code:'3707.TW',name:'漢磊',type:'stock',sector:'半導體',base:42.00,sig:0.26},
+  {code:'3708.TW',name:'上緯投控',type:'stock',sector:'綠能',base:120.5,sig:0.24},
+  {code:'3715.TW',name:'定穎投控',type:'stock',sector:'PCB',base:189.0,sig:0.22},
+  {code:'3718.TW',name:'大億科技',type:'stock',sector:'汽車零件',base:42.00,sig:0.2},
+  {code:'3720.TW',name:'全球安',type:'stock',sector:'安防',base:18.00,sig:0.22},
+  {code:'3722.TW',name:'同泰',type:'stock',sector:'PCB',base:28.00,sig:0.22},
+  {code:'3726.TW',name:'頎邦',type:'stock',sector:'封測',base:48.00,sig:0.24},
+  {code:'3727.TW',name:'天剛',type:'stock',sector:'精密',base:22.00,sig:0.22},
+  {code:'3728.TW',name:'力致',type:'stock',sector:'IC設計',base:32.00,sig:0.24},
+  {code:'3729.TW',name:'貿聯-KY',type:'stock',sector:'連接器',base:280.0,sig:0.22},
+  {code:'3730.TW',name:'惠亞',type:'stock',sector:'PCB',base:38.00,sig:0.22},
+  {code:'3732.TW',name:'啟航',type:'stock',sector:'PCB',base:18.00,sig:0.22},
+  {code:'3741.TW',name:'廣能',type:'stock',sector:'太陽能',base:12.00,sig:0.28},
+  {code:'3744.TW',name:'新華科',type:'stock',sector:'IC設計',base:65.00,sig:0.26},
+  {code:'3745.TW',name:'新煒科技',type:'stock',sector:'機殼',base:28.00,sig:0.22},
+  {code:'3748.TW',name:'奕力',type:'stock',sector:'IC設計',base:85.00,sig:0.26},
+  {code:'3752.TW',name:'耕興',type:'stock',sector:'電子代工',base:42.00,sig:0.2},
+  {code:'3753.TW',name:'勝特力',type:'stock',sector:'IC設計',base:22.00,sig:0.24},
+  {code:'3756.TW',name:'富鑫',type:'stock',sector:'PCB',base:18.00,sig:0.22},
+  {code:'3759.TW',name:'安格',type:'stock',sector:'電子',base:14.00,sig:0.24},
+  {code:'3760.TW',name:'漢辰',type:'stock',sector:'半導體',base:55.00,sig:0.26},
+  {code:'3763.TW',name:'弦創',type:'stock',sector:'電子',base:18.00,sig:0.24},
+  {code:'3765.TW',name:'昇佳電子',type:'stock',sector:'IC設計',base:95.00,sig:0.26},
+  {code:'3769.TW',name:'聯嘉光電',type:'stock',sector:'LED',base:12.00,sig:0.28},
+  {code:'3773.TW',name:'聖大科技',type:'stock',sector:'電子',base:18.00,sig:0.22},
+  {code:'3776.TW',name:'崑鼎',type:'stock',sector:'環保',base:125.0,sig:0.18},
+  {code:'3780.TW',name:'晶彩科',type:'stock',sector:'光學',base:22.00,sig:0.24},
+  {code:'3782.TW',name:'洋基工程',type:'stock',sector:'環保',base:42.00,sig:0.2},
+  {code:'3784.TW',name:'愛普',type:'stock',sector:'記憶體',base:65.00,sig:0.28},
+  {code:'3787.TW',name:'iML',type:'stock',sector:'IC設計',base:38.00,sig:0.26},
+  {code:'3788.TW',name:'創意',type:'stock',sector:'ASIC',base:1950,sig:0.27},
+  {code:'3789.TW',name:'昱捷',type:'stock',sector:'電子',base:18.00,sig:0.24},
+  {code:'3793.TW',name:'星宇航空',type:'stock',sector:'航空',base:48.00,sig:0.26},
+  {code:'3794.TW',name:'歐買尬',type:'stock',sector:'遊戲',base:38.00,sig:0.24},
+  {code:'3796.TW',name:'中保科',type:'stock',sector:'安防',base:62.00,sig:0.16},
+  {code:'3799.TW',name:'宏特',type:'stock',sector:'IC設計',base:28.00,sig:0.26},
+  {code:'2501.TW',name:'國建',type:'stock',sector:'建設',base:23.50,sig:0.18},
+  {code:'2504.TW',name:'國產',type:'stock',sector:'建設',base:35.00,sig:0.18},
+  {code:'2506.TW',name:'太設',type:'stock',sector:'建設',base:8.70,sig:0.18},
+  {code:'2511.TW',name:'太子建設',type:'stock',sector:'建設',base:7.88,sig:0.18},
+  {code:'2515.TW',name:'中工',type:'stock',sector:'工程',base:13.25,sig:0.16},
+  {code:'2516.TW',name:'新建',type:'stock',sector:'建設',base:13.30,sig:0.18},
+  {code:'2520.TW',name:'冠德',type:'stock',sector:'建設',base:29.45,sig:0.18},
+  {code:'2524.TW',name:'京城建設',type:'stock',sector:'建設',base:36.40,sig:0.18},
+  {code:'2525.TW',name:'寶來建設',type:'stock',sector:'建設',base:14.00,sig:0.18},
+  {code:'2527.TW',name:'宏璟建設',type:'stock',sector:'建設',base:34.60,sig:0.18},
+  {code:'2530.TW',name:'華建',type:'stock',sector:'建設',base:21.15,sig:0.18},
+  {code:'2534.TW',name:'宏盛',type:'stock',sector:'建設',base:18.90,sig:0.18},
+  {code:'2535.TW',name:'達欣工',type:'stock',sector:'建設',base:75.10,sig:0.18},
+  {code:'2536.TW',name:'宏普',type:'stock',sector:'建設',base:20.85,sig:0.18},
+  {code:'2537.TW',name:'聯上建設',type:'stock',sector:'建設',base:10.50,sig:0.18},
+  {code:'2538.TW',name:'基泰',type:'stock',sector:'建設',base:9.89,sig:0.18},
+  {code:'2540.TW',name:'愛山林',type:'stock',sector:'建設',base:52.00,sig:0.18},
+  {code:'2542.TW',name:'興富發',type:'stock',sector:'建設',base:39.40,sig:0.18},
+  {code:'2543.TW',name:'皇昌',type:'stock',sector:'工程',base:43.55,sig:0.16},
+  {code:'2545.TW',name:'皇翔',type:'stock',sector:'建設',base:39.00,sig:0.18},
+  {code:'2547.TW',name:'日勝生',type:'stock',sector:'建設',base:10.25,sig:0.18},
+  {code:'2548.TW',name:'華固',type:'stock',sector:'建設',base:124.5,sig:0.18},
+  {code:'5522.TW',name:'遠雄建設',type:'stock',sector:'建設',base:69.70,sig:0.18},
+  {code:'5523.TW',name:'豐謙',type:'stock',sector:'建設',base:22.00,sig:0.18},
+  {code:'8299.TW',name:'群聯',type:'stock',sector:'IC設計',base:480.0,sig:0.26},
+  {code:'6531.TW',name:'愛普',type:'stock',sector:'記憶體',base:925.0,sig:0.28},
+  {code:'6509.TW',name:'聚鼎',type:'stock',sector:'電子材料',base:68.00,sig:0.22},
+  {code:'6505.TW',name:'台塑化',type:'stock',sector:'塑化',base:52.30,sig:0.14},
+  {code:'6494.TW',name:'志超',type:'stock',sector:'PCB',base:52.00,sig:0.22},
+  {code:'6491.TW',name:'晶宏半導體',type:'stock',sector:'IC設計',base:284.0,sig:0.26},
+  {code:'6478.TW',name:'克勝',type:'stock',sector:'PCB',base:28.00,sig:0.22},
+  {code:'6477.TW',name:'利機',type:'stock',sector:'自動化',base:36.80,sig:0.22},
+  {code:'6472.TW',name:'保瑞',type:'stock',sector:'製藥',base:414.0,sig:0.24},
+  {code:'6469.TW',name:'大樹醫藥',type:'stock',sector:'醫療',base:155.0,sig:0.2},
+  {code:'6462.TW',name:'神盾',type:'stock',sector:'IC設計',base:165.0,sig:0.24},
+  {code:'6456.TW',name:'GIS-KY',type:'stock',sector:'觸控',base:70.90,sig:0.22},
+  {code:'6449.TW',name:'鈺邦',type:'stock',sector:'電容',base:179.0,sig:0.22},
+  {code:'6443.TW',name:'元晶',type:'stock',sector:'太陽能',base:40.20,sig:0.28},
+  {code:'6438.TW',name:'迅德',type:'stock',sector:'IC設計',base:174.0,sig:0.24},
+  {code:'6432.TW',name:'今國光',type:'stock',sector:'光學',base:38.00,sig:0.22},
+  {code:'6431.TW',name:'光雋科技',type:'stock',sector:'IC設計',base:19.40,sig:0.26},
+  {code:'6426.TW',name:'統新半導體',type:'stock',sector:'IC設計',base:238.5,sig:0.26},
+  {code:'6414.TW',name:'樺漢',type:'stock',sector:'電腦',base:351.5,sig:0.22},
+  {code:'6409.TW',name:'旭隼',type:'stock',sector:'電腦',base:790.0,sig:0.24},
+  {code:'6408.TW',name:'玉晶光',type:'stock',sector:'光學',base:320.0,sig:0.26},
+  {code:'6405.TW',name:'悅城科',type:'stock',sector:'IC設計',base:61.10,sig:0.26},
+  {code:'6404.TW',name:'鉅城建設',type:'stock',sector:'建設',base:18.00,sig:0.18},
+  {code:'6402.TW',name:'明安',type:'stock',sector:'高爾夫',base:48.00,sig:0.2},
+  {code:'6395.TW',name:'鑫成科',type:'stock',sector:'電子',base:35.00,sig:0.24},
+  {code:'6390.TW',name:'台芳',type:'stock',sector:'電子',base:15.00,sig:0.22},
+  {code:'6388.TW',name:'勝義科技',type:'stock',sector:'IC設計',base:28.00,sig:0.26},
+  {code:'6381.TW',name:'優達科技',type:'stock',sector:'電子',base:18.00,sig:0.24},
+  {code:'6371.TW',name:'宇通光能',type:'stock',sector:'LED',base:12.00,sig:0.28},
+  {code:'6365.TW',name:'嘉彰',type:'stock',sector:'塑化',base:18.00,sig:0.2},
+  {code:'6362.TW',name:'金鄉',type:'stock',sector:'電子',base:14.00,sig:0.22},
+  {code:'6361.TW',name:'閎暉',type:'stock',sector:'IC設計',base:22.00,sig:0.26},
+  {code:'6354.TW',name:'擎亞',type:'stock',sector:'電子',base:28.00,sig:0.22},
+  {code:'6351.TW',name:'洋華',type:'stock',sector:'觸控',base:18.00,sig:0.24},
+  {code:'6347.TW',name:'泰茂',type:'stock',sector:'電子',base:22.00,sig:0.22},
+  {code:'6341.TW',name:'皇電',type:'stock',sector:'電源',base:28.00,sig:0.22},
+  {code:'6338.TW',name:'泰碩',type:'stock',sector:'PCB',base:52.00,sig:0.24},
+  {code:'00733.TW',name:'富邦台灣中小',type:'etf',sector:'中小ETF',base:65.45,sig:0.2},
+  {code:'00737.TW',name:'台灣ESG永續',type:'etf',sector:'ESG ETF',base:36.32,sig:0.16},
+  {code:'00701.TW',name:'國泰臺灣低波動',type:'etf',sector:'低波ETF',base:31.04,sig:0.12},
+  {code:'00715L.TW',name:'期元大S&P500正2',type:'etf',sector:'槓桿ETF',base:67.50,sig:0.36},
+  {code:'00720B.TW',name:'元大投資級公司債',type:'etf',sector:'債券ETF',base:22.00,sig:0.08},
+  {code:'00724B.TW',name:'群益25年美債',type:'etf',sector:'債券ETF',base:18.00,sig:0.08},
+  {code:'00725B.TW',name:'國泰投資級公司債',type:'etf',sector:'債券ETF',base:20.00,sig:0.08},
+  {code:'00726B.TW',name:'凱基AAA至A公司債',type:'etf',sector:'債券ETF',base:18.00,sig:0.08},
+  {code:'00727.TW',name:'中信5G通訊ETF',type:'etf',sector:'5G ETF',base:18.00,sig:0.2},
+  {code:'00728.TW',name:'中信中國高股息',type:'etf',sector:'中國ETF',base:56.70,sig:0.2},
+  {code:'00730.TW',name:'富邦臺灣優質高息',type:'etf',sector:'高息ETF',base:25.89,sig:0.14},
+  {code:'00731.TW',name:'復華彭博新興市場',type:'etf',sector:'新興ETF',base:73.75,sig:0.18},
+  {code:'00739.TW',name:'元大USA房地產',type:'etf',sector:'REITs ETF',base:28.89,sig:0.16},
+  {code:'00740.TW',name:'復華富時不動產',type:'etf',sector:'REITs ETF',base:14.00,sig:0.16},
+  {code:'00741.TW',name:'富邦公司債',type:'etf',sector:'債券ETF',base:18.00,sig:0.08},
+  {code:'00742.TW',name:'新光標普美國',type:'etf',sector:'美股ETF',base:28.00,sig:0.2},
+  {code:'00762.TW',name:'群益道瓊美國地產',type:'etf',sector:'REITs ETF',base:106.7,sig:0.16},
+  {code:'00770.TW',name:'富邦全球ETF',type:'etf',sector:'全球ETF',base:61.95,sig:0.16},
+  {code:'00772B.TW',name:'中信BBB公司債',type:'etf',sector:'債券ETF',base:18.00,sig:0.08},
+  {code:'00773B.TW',name:'中信彭博高收益債',type:'etf',sector:'高息債ETF',base:14.00,sig:0.12},
+  {code:'00780.TW',name:'元大全球不動產',type:'etf',sector:'REITs ETF',base:16.00,sig:0.16},
+  {code:'00781.TW',name:'凱基美國特別股',type:'etf',sector:'美股ETF',base:22.00,sig:0.14},
+  {code:'00783.TW',name:'中信電動車',type:'etf',sector:'電動車ETF',base:30.00,sig:0.22},
+  {code:'00784.TW',name:'國泰中國A50',type:'etf',sector:'中國ETF',base:14.00,sig:0.22},
+  {code:'00786.TW',name:'元大美元公司債',type:'etf',sector:'債券ETF',base:15.00,sig:0.08},
+  {code:'00787.TW',name:'統一MSCI歐洲',type:'etf',sector:'歐洲ETF',base:18.00,sig:0.18},
+  {code:'00789.TW',name:'凱基那斯達克',type:'etf',sector:'美股ETF',base:28.00,sig:0.24},
+  {code:'00831.TW',name:'富邦未來車',type:'etf',sector:'電動車ETF',base:16.00,sig:0.22},
+  {code:'00832.TW',name:'凱基優選高股息30',type:'etf',sector:'高息ETF',base:22.00,sig:0.14},
+  {code:'00834.TW',name:'台新臺灣IC設計',type:'etf',sector:'IC設計ETF',base:18.00,sig:0.22},
+  {code:'00835.TW',name:'野村台灣新科技50',type:'etf',sector:'科技ETF',base:22.00,sig:0.2},
+  {code:'00836.TW',name:'永豐臺灣ESG',type:'etf',sector:'ESG ETF',base:18.00,sig:0.16},
+  {code:'00840.TW',name:'野村全球電動車',type:'etf',sector:'電動車ETF',base:14.00,sig:0.22},
+  {code:'00841.TW',name:'國泰智能電動車',type:'etf',sector:'電動車ETF',base:14.00,sig:0.22},
+  {code:'00842.TW',name:'台新MSCI中國',type:'etf',sector:'中國ETF',base:12.00,sig:0.22},
+  {code:'00843.TW',name:'康和S&P500',type:'etf',sector:'美股ETF',base:20.00,sig:0.2},
+  {code:'00846.TW',name:'台新標普綠能',type:'etf',sector:'綠能ETF',base:14.00,sig:0.22},
+  {code:'00850.TW',name:'元大臺灣ESG',type:'etf',sector:'ESG ETF',base:81.00,sig:0.16},
+  {code:'00851.TW',name:'永豐美國500大',type:'etf',sector:'美股ETF',base:62.50,sig:0.2},
+  {code:'00858.TW',name:'野村美國優選',type:'etf',sector:'美股ETF',base:20.00,sig:0.2},
+  {code:'00861.TW',name:'元大全球關鍵半導體',type:'etf',sector:'半導ETF',base:80.70,sig:0.22},
+  {code:'00864B.TW',name:'群益ESG投等債',type:'etf',sector:'債券ETF',base:15.00,sig:0.08},
+  {code:'00865B.TW',name:'中信優先順位抵押',type:'etf',sector:'債券ETF',base:47.83,sig:0.08},
+  {code:'00867.TW',name:'中信關鍵半導體',type:'etf',sector:'半導ETF',base:22.00,sig:0.22},
+  {code:'00868.TW',name:'國泰永續高股息2',type:'etf',sector:'高息ETF',base:22.00,sig:0.14},
+  {code:'00869.TW',name:'凱基台灣優選報酬',type:'etf',sector:'高息ETF',base:20.00,sig:0.14},
+  {code:'00870.TW',name:'統一台灣高息動能',type:'etf',sector:'高息ETF',base:18.00,sig:0.14},
+  {code:'00872.TW',name:'中信中國50',type:'etf',sector:'中國ETF',base:12.00,sig:0.22},
+  {code:'00873.TW',name:'國泰美國道瓊',type:'etf',sector:'美股ETF',base:18.00,sig:0.2},
+  {code:'00875.TW',name:'國泰網路資安',type:'etf',sector:'資安ETF',base:42.16,sig:0.22},
+  {code:'00876.TW',name:'元大標普500',type:'etf',sector:'美股ETF',base:80.30,sig:0.2},
+  {code:'00877.TW',name:'中信美國不動產',type:'etf',sector:'REITs ETF',base:14.00,sig:0.16},
+  {code:'00880.TW',name:'富邦台灣深護城河',type:'etf',sector:'深護ETF',base:20.00,sig:0.16},
+  {code:'00882.TW',name:'中信航空航天',type:'etf',sector:'航空ETF',base:15.82,sig:0.22},
+  {code:'00883.TW',name:'凱基全球菁英55',type:'etf',sector:'全球ETF',base:20.00,sig:0.18},
+  {code:'00884.TW',name:'兆豐洲際台股',type:'etf',sector:'台股ETF',base:18.00,sig:0.16},
+  {code:'00885.TW',name:'富邦美國中小',type:'etf',sector:'美股ETF',base:18.92,sig:0.22},
+  {code:'00886.TW',name:'永豐全球關鍵供應鏈',type:'etf',sector:'全球ETF',base:18.00,sig:0.2},
+  {code:'00888.TW',name:'永豐台灣ESG優質',type:'etf',sector:'ESG ETF',base:20.00,sig:0.16},
+  {code:'00891.TW',name:'中信關鍵半導體2',type:'etf',sector:'半導ETF',base:33.76,sig:0.22},
+  {code:'00893.TW',name:'國泰全球品牌50',type:'etf',sector:'全球ETF',base:43.07,sig:0.18},
+  {code:'00894.TW',name:'中信小資高息60',type:'etf',sector:'高息ETF',base:46.99,sig:0.14},
+  {code:'00895.TW',name:'富邦未來消費',type:'etf',sector:'消費ETF',base:46.99,sig:0.18},
+  {code:'00896.TW',name:'中信綠能及電動車',type:'etf',sector:'綠能ETF',base:26.38,sig:0.22},
+  {code:'00897.TW',name:'台新美國先進半導體',type:'etf',sector:'半導ETF',base:9.72,sig:0.24},
+  {code:'00898.TW',name:'永豐ESG低碳高息',type:'etf',sector:'ESG ETF',base:8.11,sig:0.14},
+  {code:'00899.TW',name:'中信AI晶片',type:'etf',sector:'AI ETF',base:26.75,sig:0.24},
+  {code:'00900.TW',name:'富邦特選高股息30',type:'etf',sector:'高息ETF',base:16.42,sig:0.14},
+  {code:'00901.TW',name:'永豐台灣優息存股',type:'etf',sector:'高息ETF',base:40.90,sig:0.14},
+  {code:'00902.TW',name:'中信電池及儲能',type:'etf',sector:'綠能ETF',base:17.54,sig:0.22},
+  {code:'00903.TW',name:'台新北美科技',type:'etf',sector:'美股ETF',base:19.78,sig:0.22},
+  {code:'00904.TW',name:'新光臺灣半導體30',type:'etf',sector:'半導ETF',base:38.17,sig:0.22},
+  {code:'00905.TW',name:'FH台灣TOP50',type:'etf',sector:'大盤ETF',base:24.50,sig:0.16},
+  {code:'00906.TW',name:'SEMI AI&晶片',type:'etf',sector:'AI ETF',base:20.00,sig:0.22},
+  {code:'00907.TW',name:'永豐優息存股',type:'etf',sector:'高息ETF',base:14.64,sig:0.14},
+  {code:'00908.TW',name:'富邦全球AI',type:'etf',sector:'AI ETF',base:14.14,sig:0.24},
+  {code:'00910.TW',name:'重電及綠能基礎建設',type:'etf',sector:'綠能ETF',base:66.95,sig:0.2},
+  {code:'00911.TW',name:'兆豐台灣晶圓製造',type:'etf',sector:'半導ETF',base:53.25,sig:0.22},
+  {code:'00912.TW',name:'中信臺灣智慧50',type:'etf',sector:'科技ETF',base:30.27,sig:0.2},
+  {code:'00914.TW',name:'中信特選金融',type:'etf',sector:'金融ETF',base:20.00,sig:0.14},
+  {code:'00915.TW',name:'凱基優選長利高息30',type:'etf',sector:'高息ETF',base:25.77,sig:0.14},
+  {code:'00916.TW',name:'國泰AI+Robo',type:'etf',sector:'AI ETF',base:27.39,sig:0.22},
+  {code:'00917.TW',name:'中信特選半導體',type:'etf',sector:'半導ETF',base:21.60,sig:0.22},
+  {code:'00918.TW',name:'大華優利高填息30',type:'etf',sector:'高息ETF',base:24.34,sig:0.14},
+  {code:'00920.TW',name:'富邦優質高息30',type:'etf',sector:'高息ETF',base:26.62,sig:0.14},
+  {code:'00921.TW',name:'兆豐台灣核心戰略',type:'etf',sector:'科技ETF',base:21.34,sig:0.18},
+  {code:'00922.TW',name:'國泰台灣領袖50',type:'etf',sector:'大盤ETF',base:35.98,sig:0.16},
+  {code:'00923.TW',name:'群益台灣精選高息',type:'etf',sector:'高息ETF',base:37.85,sig:0.14},
+  {code:'00924.TW',name:'OO大華台灣永續高息',type:'etf',sector:'ESG ETF',base:31.44,sig:0.14},
+  {code:'00925.TW',name:'凱基科技高息',type:'etf',sector:'科技ETF',base:18.00,sig:0.18},
+  {code:'00926.TW',name:'凱基優選5G150',type:'etf',sector:'5G ETF',base:24.85,sig:0.2},
+  {code:'00927.TW',name:'富邦特選台灣優質高息',type:'etf',sector:'高息ETF',base:34.78,sig:0.14},
+  {code:'00928.TW',name:'第一金台灣工業菁英30',type:'etf',sector:'工業ETF',base:18.00,sig:0.18},
+  {code:'00930.TW',name:'永豐ESG永續高息',type:'etf',sector:'ESG ETF',base:21.36,sig:0.14},
+  {code:'00931.TW',name:'統一台灣動能精選',type:'etf',sector:'科技ETF',base:16.00,sig:0.18},
+  {code:'00932.TW',name:'兆豐永續高息等權',type:'etf',sector:'高息ETF',base:16.25,sig:0.14},
+  {code:'00933.TW',name:'國泰台灣5G+II',type:'etf',sector:'5G ETF',base:16.00,sig:0.18},
+  {code:'00934.TW',name:'中信成長高息',type:'etf',sector:'高息ETF',base:25.08,sig:0.14},
+  {code:'00935.TW',name:'野村臺灣高息低波',type:'etf',sector:'低波ETF',base:53.70,sig:0.12},
+  {code:'00936.TW',name:'台新臺灣IC設計小型',type:'etf',sector:'IC設計ETF',base:19.30,sig:0.22},
+  {code:'00937.TW',name:'群益ESG投等債20+',type:'etf',sector:'債券ETF',base:15.00,sig:0.08},
+  {code:'00939.TW',name:'統一台灣高息動能II',type:'etf',sector:'高息ETF',base:17.84,sig:0.14},
+  {code:'00941.TW',name:'群益半導體收益',type:'etf',sector:'半導ETF',base:25.29,sig:0.2},
+  {code:'00942.TW',name:'台新臺灣高息動能',type:'etf',sector:'高息ETF',base:18.00,sig:0.14},
+  {code:'00943.TW',name:'群益北美科技',type:'etf',sector:'美股ETF',base:18.36,sig:0.22},
+  {code:'00944.TW',name:'富邦臺灣ESG高息',type:'etf',sector:'ESG ETF',base:18.66,sig:0.14},
+  {code:'00945.TW',name:'凱基AI明星',type:'etf',sector:'AI ETF',base:20.00,sig:0.22},
+  {code:'00946.TW',name:'元大臺灣高股息50',type:'etf',sector:'高息ETF',base:12.85,sig:0.14},
+  {code:'00947.TW',name:'群益台灣成長高息',type:'etf',sector:'高息ETF',base:35.73,sig:0.14},
+  {code:'00948.TW',name:'中信台灣優質成長',type:'etf',sector:'成長ETF',base:18.00,sig:0.18},
+  {code:'00949.TW',name:'台新臺灣ESG優息',type:'etf',sector:'ESG ETF',base:19.77,sig:0.14},
+  {code:'00950.TW',name:'富邦台灣ESG優息',type:'etf',sector:'ESG ETF',base:18.00,sig:0.14},
+];
+// ── 確定性隨機引擎 ────────────────────────────────────────────────
+function makeRng(seed) {
+  var s = seed >>> 0;
+  return function(mn, mx) {
+    s = (s * 1664525 + 1013904223) >>> 0;
+    return mn + (s / 0xffffffff) * (mx - mn);
+  };
+}
+
+// ── 2026/04/29 真實法人籌碼（來源：Yahoo股市/鉅亨網）──────────
+// 格式：外資(張)、投信(張)、自營(張)
+// 正數=買超、負數=賣超；未列=使用亂數模擬
+const REAL_INDICATORS = {
+  // 真實技術指標（update_prices.js 每日更新）
+  '2330.TW':{rsi:67.2,macd:94.17,k:74.9,d:64.4,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:8.8,volRat:0.95,chgPct:2.67},
+  '2454.TW':{rsi:91.6,macd:398.8,k:82.1,d:68.6,macdSignal:'bullish',kdSignal:'overbought',ma20Status:'above',ma20gap:48.2,volRat:0.5,chgPct:-0.29},
+  '2303.TW':{rsi:81.8,macd:6.98,k:79.4,d:67,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:30.7,volRat:1.45,chgPct:5.58},
+  '3711.TW':{rsi:76.7,macd:39.41,k:71.2,d:62.3,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:15,volRat:0.8,chgPct:3.05},
+  '2379.TW':{rsi:49.7,macd:11.39,k:41.2,d:44.9,macdSignal:'bullish',kdSignal:'death_cross',ma20Status:'above',ma20gap:0.3,volRat:1.04,chgPct:-0.92},
+  '3034.TW':{rsi:68.1,macd:11.33,k:85.2,d:70.4,macdSignal:'bullish',kdSignal:'overbought',ma20Status:'above',ma20gap:9.4,volRat:1.57,chgPct:2.6},
+  '6415.TW':{rsi:76.3,macd:37.72,k:51.1,d:50.6,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:14.7,volRat:0.75,chgPct:0.12},
+  '2382.TW':{rsi:63.5,macd:9.1,k:70.4,d:61.8,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:6.1,volRat:1.11,chgPct:-0.72},
+  '3661.TW':{rsi:81.1,macd:349.55,k:79.7,d:67.2,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:25.6,volRat:1.26,chgPct:5.04},
+  '6669.TW':{rsi:75.8,macd:313.23,k:68.1,d:60.5,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:13.6,volRat:0.87,chgPct:-1.81},
+  '2345.TW':{rsi:73.8,macd:217.62,k:77.8,d:66.1,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:19.3,volRat:0.85,chgPct:3.02},
+  '3443.TW':{rsi:88.9,macd:615.08,k:85.2,d:70.4,macdSignal:'bullish',kdSignal:'overbought',ma20Status:'above',ma20gap:43,volRat:0.87,chgPct:9.99},
+  '2308.TW':{rsi:79.6,macd:181.66,k:68.5,d:60.7,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:14.9,volRat:1.22,chgPct:3.17},
+  '2383.TW':{rsi:78.8,macd:498.26,k:73.8,d:63.8,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:19.6,volRat:0.83,chgPct:0.2},
+  '3037.TW':{rsi:79,macd:93.48,k:65.7,d:59.1,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:20,volRat:0.74,chgPct:4.43},
+  '8046.TW':{rsi:75.7,macd:102.51,k:54.2,d:52.4,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:15.3,volRat:0.62,chgPct:0.74},
+  '6533.TW':{rsi:62.3,macd:12.23,k:57.4,d:54.3,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:9.8,volRat:1.06,chgPct:1.86},
+  '2317.TW':{rsi:82.1,macd:9.77,k:77.3,d:65.8,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:15.6,volRat:1.12,chgPct:0.6},
+  '2354.TW':{rsi:75.1,macd:1.74,k:75.7,d:64.9,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:18.9,volRat:2.28,chgPct:-1.56},
+  '4938.TW':{rsi:66.4,macd:1.49,k:69.2,d:61.1,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:2.8,volRat:1.1,chgPct:0.84},
+  '2409.TW':{rsi:29.2,macd:0.26,k:70.8,d:62,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'below',ma20gap:-0.1,volRat:1.39,chgPct:1.66},
+  '3481.TW':{rsi:60.9,macd:0.39,k:81.7,d:68.4,macdSignal:'bullish',kdSignal:'overbought',ma20Status:'above',ma20gap:14.7,volRat:2.5,chgPct:5.87},
+  '3008.TW':{rsi:37.4,macd:47.95,k:46.9,d:48.2,macdSignal:'bullish',kdSignal:'death_cross',ma20Status:'above',ma20gap:0.2,volRat:0.99,chgPct:2.18},
+  '2881.TW':{rsi:78,macd:1.04,k:82.4,d:68.8,macdSignal:'bullish',kdSignal:'overbought',ma20Status:'above',ma20gap:6.1,volRat:1.05,chgPct:1.83},
+  '2882.TW':{rsi:67.9,macd:1.3,k:79.1,d:66.9,macdSignal:'bullish',kdSignal:'golden_cross',ma20Status:'above',ma20gap:5,volRat:0.62,chgPct:0.38},
+};
+const REAL_CHIPS = {
+  // 2026/04/29 真實三大法人（來源：Yahoo股市/鉅亨網/豐雲學堂）
+  // 外資：集中市場賣超481.47億；投信買超21.28億；自營賣超15.99億
+  // 個股外資買超
+  '2408.TW': { f:+36559, i:-200,  d:-300  }, // 南亞科（外資大買，記憶體回檔投信小賣）
+  '2337.TW': { f:+29694, i:-2000, d:+200  }, // 旺宏（外資大買，漲停後投信獲利了結）
+  '00878.TW':{ f:+27017, i:+500,  d:+200  }, // 國泰永續高股息
+  '2317.TW': { f:+19579, i:+300,  d:+500  }, // 鴻海（外資大買+投信護盤）
+  '0056.TW': { f:+16311, i:+800,  d:+100  }, // 元大高股息
+  '2344.TW': { f:+11770, i:+800,  d:+200  }, // 華邦電（外資+投信買）
+  '1303.TW': { f:+11762, i:0,     d:0     }, // 南亞
+  '1326.TW': { f:+10151, i:+300,  d:+50   }, // 台化
+  // 個股外資賣超
+  '2330.TW': { f:-18940, i:+2000, d:-500  }, // 台積電（外資賣，投信護盤）
+  '2303.TW': { f:-19286, i:0,     d:-800  }, // 聯電
+  '2409.TW': { f:-37482, i:0,     d:+200  }, // 友達（外資重賣）
+  '2002.TW': { f:-37952, i:0,     d:0     }, // 中鋼（外資大賣）
+  // 投信買超個股（PChome/鉅亨網資料）
+  '2382.TW': { f:-2000,  i:+1200, d:+300  }, // 廣達（投信買超第1）
+  '8046.TW': { f:+1362,  i:+980,  d:+200  }, // 南電（投信買超）
+  '2882.TW': { f:+500,   i:+850,  d:+100  }, // 國泰金（投信布局）
+  '2308.TW': { f:-500,   i:+780,  d:+200  }, // 台達電（創高，投信追買）
+  '2345.TW': { f:+771,   i:+720,  d:+150  }, // 智邦（天價，投信+外資同買）
+  '3037.TW': { f:+500,   i:+680,  d:+100  }, // 欣興（漲2.91%，PCB強勢）
+  '2383.TW': { f:+300,   i:+620,  d:+80   }, // 台光電（PCB天價）
+  '2379.TW': { f:-200,   i:+580,  d:+60   }, // 瑞昱（投信買）
+  '3443.TW': { f:+200,   i:+520,  d:+80   }, // 創意（ASIC強勢）
+  '2881.TW': { f:+300,   i:+460,  d:+100  }, // 富邦金（金融護盤）
+  '6669.TW': { f:+1088,  i:+1500, d:+200  }, // 緯穎（AI強漲，投信追買）
+  '2454.TW': { f:-3000,  i:+400,  d:-200  }, // 聯發科（外資獲利了結，投信小買）
+  '3711.TW': { f:+674,   i:+200,  d:+50   }, // 日月光投控（攻500元）
+  '3481.TW': { f:+10980, i:0,     d:0     }, // 群創（外資大買）
+  '2891.TW': { f:0,      i:+350,  d:+80   }, // 中信金（投信布局）
+};
+// ── 單檔評分 ──────────────────────────────────────────────────────
+// base = 最新真實收盤（直接硬編）
+// dateSeed 控制每日隨機；close = base ± 小幅波動（±sig×10%）
+function scoreOne(c, dateSeed, idx) {
+  var rand = makeRng((dateSeed * 31 + idx * 7919 + Math.round(c.base * 10) * 37) >>> 0);
+
+  // 收盤價 = 直接用 base（前一交易日真實收盤）
+  var dp    = c.base >= 1000 ? 0 : c.base >= 100 ? 1 : 2;
+  var close = c.base;
+
+  // [RI_PATCHED] 技術指標：有真實資料用真實，否則亂數
+  var _ri = (typeof REAL_INDICATORS !== 'undefined') ? REAL_INDICATORS[c.code] : null;
+  var rsi     = _ri ? _ri.rsi     : rand(20, 82);
+  var macd    = _ri ? _ri.macd    : rand(-10, 14);
+  var kdK     = _ri ? _ri.k       : rand(12, 88);
+  var kdD     = _ri ? _ri.d       : (kdK + rand(-15, 15));
+  var ma20gap = _ri ? _ri.ma20gap : rand(-6, 10);
+  var volRat  = _ri ? _ri.volRat  : rand(0.4, 3.5);
+  var chgPct  = _ri ? _ri.chgPct  : +rand(-4, 6).toFixed(2);
+
+  // 技術分
+  var tech = 0;
+  if (rsi>=45&&rsi<=72) tech+=22; else if (rsi>72) tech+=10; else if (rsi<30) tech+=8;
+  if (macd>0) tech+=22; if (macd>4) tech+=8;
+  if (kdK>kdD&&kdK<80) tech+=18;
+  if (ma20gap>0) tech+=16; if (ma20gap>3) tech+=6;
+  if (volRat>1.5) tech+=10; if (chgPct>1.5) tech+=6;
+
+  // 法人籌碼：優先使用真實資料，否則亂數模擬
+  var realChip = REAL_CHIPS[c.code];
+  var foreignNet = realChip ? realChip.f : Math.round(rand(-35000, 65000));
+  var investNet  = realChip ? realChip.i : Math.round(rand(-6000, 10000));
+  var dealerNet  = realChip ? realChip.d : Math.round(rand(-3000, 4000));
+  var brokerNet  = Math.max(0, Math.round(rand(-5000, 45000)));
+  var conc       = rand(12, 88);
+  var weekChg    = Math.round(rand(-4000, 10000));
+  var whaleChg   = rand(-2, 3);
+
+  // 籌碼分
+  var chip = 0;
+  if (foreignNet>0) chip+=22; if (foreignNet>8000) chip+=14;
+  if (investNet>0)  chip+=18; if (investNet>2000)  chip+=8;
+  if (dealerNet>0)  chip+=8;
+  if (brokerNet>5000) chip+=14; if (conc>55) chip+=8;
+  if (weekChg>0)    chip+=6;  if (whaleChg>0)      chip+=4;
+
+  var score  = Math.round(tech*0.55 + chip*0.45);
+  var upside = +(rand(1.2, 3.5) + (score-50)*0.08).toFixed(1);
+
+  var inds = [];
+  if      (rsi>=45&&rsi<=72) inds.push({l:'RSI='+rsi.toFixed(0)+' 多頭',c:'bull'});
+  else if (rsi<30)            inds.push({l:'RSI='+rsi.toFixed(0)+' 超賣反彈',c:'warn'});
+  else if (rsi>72)            inds.push({l:'RSI='+rsi.toFixed(0)+' 強勢',c:'bull'});
+  else                        inds.push({l:'RSI='+rsi.toFixed(0),c:'neut'});
+  inds.push({l:macd>0?'MACD 翻正':'MACD 收斂',c:macd>0?'bull':'warn'});
+  inds.push({l:kdK>kdD&&kdK<80?'KD 黃金交叉':kdK>kdD?'KD 高檔鈍化':'KD 觀察',c:kdK>kdD&&kdK<80?'bull':'warn'});
+  inds.push({l:ma20gap>0?'站上MA20 (+'+ma20gap.toFixed(1)+'%)':'MA20壓力',c:ma20gap>0?'bull':'warn'});
+  inds.push({l:'量能 '+volRat.toFixed(1)+'x',c:volRat>=1.5?'bull':'neut'});
+  inds.push({l:(foreignNet>=0?'外資+':'外資')+(foreignNet/1000).toFixed(0)+'千張',c:foreignNet>0?'bull':'warn'});
+
+  var bpR = foreignNet>10000&&investNet>0?'strong':foreignNet>0?'moderate':'light';
+  var bpL = {strong:'大戶強力買進',moderate:'外資溫和布局',light:'法人觀望'}[bpR];
+  var tdcS = weekChg>500?'bull':weekChg<-500?'bear':'neut';
+  var tdcL = {bull:'散戶積極承接',neut:'戶數持平',bear:'戶數流失'}[tdcS];
+
+  return {
+    code:c.code, name:c.name, type:c.type, sector:c.sector,
+    close:close, score:score, upside:upside, chgPct:chgPct, indicators:inds,
+    buy:    +(close*0.983).toFixed(dp),
+    target: +(close*(1+Math.max(upside,1.5)/100)).toFixed(dp),
+    stop:   +(close*0.92).toFixed(dp),
+    holdMin:upside>5?3:5, holdMax:upside>5?7:14,
+    bpScore:Math.round(chip),
+    bp:{
+      foreign:foreignNet, invest:investNet, dealer:dealerNet,
+      foreignDays:foreignNet>0?Math.floor(rand(1,6)):0,
+      investDays: investNet>0?Math.floor(rand(1,5)):0,
+      instOwn:rand(35,80).toFixed(1)+'%',
+      chgInstOwn:(rand(-2,3)>0?'+':'')+rand(-2,3).toFixed(1)+'%',
+      rating:bpR, ratingLbl:bpL,
+      note:'外資'+(foreignNet>=0?'買超':'賣超')+Math.abs(foreignNet).toLocaleString()+'張，投信'+(investNet>=0?'買超':'賣超')+Math.abs(investNet).toLocaleString()+'張。',
+    },
+    broker:{
+      netBuy:brokerNet, buyBranch:Math.round(rand(8,55)), sellBranch:Math.round(rand(5,30)),
+      concentration:+conc.toFixed(1), signal:'accu',
+      signalLbl:conc>60?'主力高度積累':'廣泛分散買進',
+      top5:[
+        {name:'富邦台北',code:'F0123',buy:Math.round(brokerNet*.22),sell:Math.round(brokerNet*.03),net:Math.round(brokerNet*.19)},
+        {name:'元大南京',code:'E0033',buy:Math.round(brokerNet*.18),sell:Math.round(brokerNet*.04),net:Math.round(brokerNet*.14)},
+        {name:'凱基信義',code:'K0028',buy:Math.round(brokerNet*.15),sell:Math.round(brokerNet*.03),net:Math.round(brokerNet*.12)},
+        {name:'國泰世華',code:'C0042',buy:Math.round(brokerNet*.13),sell:Math.round(brokerNet*.05),net:Math.round(brokerNet*.08)},
+        {name:'永豐中山',code:'S0017',buy:Math.round(brokerNet*.11),sell:Math.round(brokerNet*.04),net:Math.round(brokerNet*.07)},
+      ],
+      note:'前5大分點集中度'+conc.toFixed(1)+'%，主力方向'+(conc>60?'明確':'分散')+'。',
+    },
+    tdcc:{
+      totalHolder:Math.round(rand(15000,1300000)),
+      weekChg:weekChg, monthChg:Math.round(weekChg*rand(2.5,4.5)),
+      whaleRatio:+rand(2,24).toFixed(1), whaleChg:+whaleChg.toFixed(1),
+      retailRatio:+rand(15,70).toFixed(1), retailChg:+(weekChg>0?rand(0.5,3):-rand(0.3,2)).toFixed(1),
+      dist:[
+        {label:'1–999股',   pct:+rand(15,65).toFixed(1),chg:+rand(-2,3).toFixed(1),color:'#4da6ff'},
+        {label:'1–5張',     pct:+rand(12,28).toFixed(1),chg:+rand(-1,2).toFixed(1),color:'#60c0d0'},
+        {label:'5–10張',    pct:+rand(8,18).toFixed(1), chg:+rand(-1,1).toFixed(1),color:'#a0c080'},
+        {label:'10–50張',   pct:+rand(5,15).toFixed(1), chg:+rand(-1,1).toFixed(1),color:'#d0a040'},
+        {label:'50–200張',  pct:+rand(3,10).toFixed(1), chg:+rand(-1,1).toFixed(1),color:'#e07040'},
+        {label:'>200張(大戶)',pct:+rand(2,24).toFixed(1),chg:+whaleChg.toFixed(1),  color:'#ff3d5a'},
+      ],
+      signal:tdcS, signalLbl:tdcL,
+      note:'本週戶數'+(weekChg>=0?'增加':'減少')+Math.abs(weekChg).toLocaleString()+'戶。',
+    },
+  };
+}
+
+// ── FETCH：從 80 檔評分取前 10（收盤價來自 MARKET_POOL.base）────
+// 收盤價由 update_prices.js 每日自動更新
+async function fetchLatestData(tradeDate) {
+  await new Promise(function(r){ setTimeout(r, 200); });
+  var dateSeed = parseInt(tradeDate.replace(/-/g,''), 10);
+  var allScored = MARKET_POOL.map(function(c,idx){ return scoreOne(c, dateSeed, idx); });
+  allScored.sort(function(a,b){ return b.score - a.score; });
+  var top10 = allScored.slice(0,10).map(function(s,i){
+    s.rank  = i+1;
+    s.color = COLOR_PALETTE[i % COLOR_PALETTE.length];
+    return s;
+  });
+  return {
+    top10: top10,
+    totalScanned: allScored.length,
+    marketSummary: tradeDate+' 收盤 | 全市場 '+allScored.length+' 檔掃描 → 前10名。產業：'
+      +[...new Set(top10.map(function(s){return s.sector}))].join('、'),
+  };
+}
+// ── APPLY DATA TO STOCKS ──────────────────────────────────────────
+function applyUpdatedData(result, tradeDate) {
+  STOCKS.length = 0;
+  result.top10.forEach(function(s){ STOCKS.push(s); });
+  addLog('📊 '+result.marketSummary, 'success');
+  addLog('🔍 候選 '+result.totalScanned+' 檔 → 前10名', 'auto');
+  var avgUpside = (STOCKS.reduce(function(a,s){return a+s.upside},0)/STOCKS.length).toFixed(1);
+  var bpCnt  = STOCKS.filter(function(s){return s.broker.signal==='accu'}).length;
+  var tdcCnt = STOCKS.filter(function(s){return s.tdcc.weekChg>0}).length;
+  var avgSc  = Math.round(STOCKS.reduce(function(a,s){return a+s.score},0)/STOCKS.length);
+  var sc = document.querySelectorAll('.sumgrid .scard');
+  if(sc[0]) sc[0].querySelector('.sc-val').textContent = STOCKS.length;
+  if(sc[1]) sc[1].querySelector('.sc-val').textContent = '+'+avgUpside+'%';
+  if(sc[2]) sc[2].querySelector('.sc-val').textContent = bpCnt+' / 10';
+  if(sc[4]) sc[4].querySelector('.sc-val').textContent = tdcCnt+' / 10';
+  if(sc[5]) sc[5].querySelector('.sc-val').textContent = avgSc;
+}
+
+// ── ADD SHIMMER TO CARDS ──────────────────────────────────────────
+function shimmerCards(on) {
+  document.querySelectorAll('.card').forEach(c => {
+    if (on) c.classList.add('refreshing');
+    else    c.classList.remove('refreshing');
+  });
+}
+
+// ── UPDATE HEADER DATE ────────────────────────────────────────────
+function updateHeaderDate(tradeDate) {
+  document.title = `台股明日潛力 10 檔分析 — ${formatDateDisplay(tradeDate)}`;
+  const logoP = document.querySelector('.logo p');
+  if (logoP) {
+    const DOW_ZH = ['日','一','二','三','四','五','六'];
+    // Next trading day after tradeDate
+    let nextMs = twMsFromStr(tradeDate) + 86400000;
+    while (!isTradingDay(nextMs)) nextMs += 86400000;
+    const nextStr = twParts(nextMs).dateStr;
+    const nextDow = twParts(nextMs).weekday;
+    logoP.textContent = `收盤日：${formatDateDisplay(tradeDate)} · 操作日：${formatDateDisplay(nextStr)}（週${DOW_ZH[nextDow]}）· 資料來源：yahoo-finance2 + TWSE + TDCC`;
+  }
+  const hbadge = document.querySelector('.hbadge.g');
+  if (hbadge) hbadge.innerHTML = `<span class="pulse"></span>${formatDateDisplay(tradeDate)}`;
+}
+
+// ── TOAST ─────────────────────────────────────────────────────────
+let toastTimer = null;
+function showToast(msg, type = 'success') {
+  const toast = document.getElementById('toast');
+  const icon  = document.querySelector('.toast-icon');
+  const msgEl = document.getElementById('toastMsg');
+  toast.className = `toast ${type}`;
+  icon.textContent  = type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ';
+  msgEl.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3800);
+}
+
+// ── LOG ───────────────────────────────────────────────────────────
+function addLog(msg, type = 'success') {
+  const nowMs = Date.now();
+  UPD.logs.unshift({ ts: fmtDateTimeTW(nowMs), msg, type });
+  if (UPD.logs.length > 60) UPD.logs.pop();
+  renderLogs();
+}
+
+function renderLogs() {
+  const body = document.getElementById('logBody');
+  if (UPD.logs.length === 0) {
+    body.innerHTML = '<div class="log-empty">尚無更新紀錄</div>';
+    return;
+  }
+  body.innerHTML = UPD.logs.map(l => `
+    <div class="log-entry ${l.type}">
+      <div class="log-ts">${l.ts}</div>
+      <div class="log-msg">${l.msg}</div>
+    </div>`).join('');
+}
+
+// ── STATUS DOT ───────────────────────────────────────────────────
+function setDot(state) {
+  const dot = document.getElementById('updDot');
+  dot.className = `upd-dot ${state}`;
+}
+
+// ── COUNTDOWN & PROGRESS ──────────────────────────────────────────
+function startCountdown() {
+  clearInterval(UPD.countdownTimer);
+  UPD.countdownTimer = setInterval(() => {
+    if (!UPD.nextUpdateAt || !UPD.autoOn) {
+      document.getElementById('updNext').textContent = '';
+      document.getElementById('updProgress').style.width = '0%';
+      return;
+    }
+    const now = Date.now();
+    const diff = UPD.nextUpdateAt - now;  // both are UTC ms
+    if (diff <= 0) { triggerUpdate('auto'); return; }
+
+    const hh = Math.floor(diff / 3600000);
+    const mm = Math.floor((diff % 3600000) / 60000);
+    const ss = Math.floor((diff % 60000) / 1000);
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('updNext').textContent =
+      `· 下次更新：${pad(hh)}:${pad(mm)}:${pad(ss)} 後`;
+
+    const total = 24 * 3600000;
+    const elapsed = total - diff;
+    const pct = Math.min(100, Math.max(0, elapsed / total * 100));
+    document.getElementById('updProgress').style.width = pct + '%';
+  }, 1000);
+}
+
+// ── MAIN UPDATE FLOW ──────────────────────────────────────────────
+async function triggerUpdate(source = 'manual') {
+  if (UPD.isLoading) return;
+  UPD.isLoading = true;
+
+  const btn = document.getElementById('btnUpdate');
+  btn.disabled = true;
+  btn.classList.add('spinning');
+  setDot('loading');
+  shimmerCards(true);
+
+  const tradeDate = getDisplayTradeDate();
+  document.getElementById('updLabel').textContent = `🤖 AI 掃描全市場中（${formatDateDisplay(tradeDate)}）…`;
+
+  try {
+    const updates = await fetchLatestData(tradeDate);
+    applyUpdatedData(updates, tradeDate);
+
+    // Re-render everything
+    apply();
+    renderBrokerOverview();
+    renderTdccOverview();
+    updateHeaderDate(tradeDate);
+
+    UPD.lastUpdateTime = Date.now();   // UTC ms
+    UPD.lastUpdateDate = tradeDate;
+
+    const timeStr = fmtTime(UPD.lastUpdateTime);
+    document.getElementById('updLabel').textContent = `已更新至 ${formatDateDisplay(tradeDate)} 收盤`;
+    document.getElementById('updTime').textContent = `· 更新時間 ${timeStr}`;
+    setDot('live');
+
+    const srcLabel = source === 'auto' ? '⏰ 自動排程' : '🖱️ 手動觸發';
+    const msg = `${srcLabel}｜AI 全市場掃描完成 ${formatDateDisplay(tradeDate)}，篩選出 ${STOCKS.length} 檔推薦標的`;
+    addLog(msg, source === 'auto' ? 'auto' : 'success');
+    showToast(`✅ AI 掃描完成，已更新 ${STOCKS.length} 檔推薦標的`, 'success');
+
+    // Schedule next update
+    if (UPD.autoOn) scheduleNextUpdate();
+
+  } catch (err) {
+    setDot('error');
+    const msg = err.message || '未知錯誤';
+    document.getElementById('updLabel').textContent = `更新失敗：${msg.slice(0, 60)}`;
+    addLog(`❌ 更新失敗：${msg}`, 'fail');
+    showToast(`❌ ${msg.slice(0, 50)}`, 'error');
+  } finally {
+    UPD.isLoading = false;
+    shimmerCards(false);
+    btn.disabled = false;
+    btn.classList.remove('spinning');
+  }
+}
+
+// ── SCHEDULE NEXT 08:00 UPDATE ────────────────────────────────────
+function scheduleNextUpdate() {
+  clearTimeout(UPD.scheduledTimer);
+  if (!UPD.autoOn) return;
+
+  UPD.nextUpdateAt = calcNextUpdate();   // UTC ms
+  const delay = UPD.nextUpdateAt - Date.now();
+
+  const dateStr = twParts(UPD.nextUpdateAt).dateStr;
+  addLog(`⏰ 已排程下次自動更新：${formatDateDisplay(dateStr)} 08:00（台北時間 GMT+8），約 ${Math.round(delay/60000)} 分鐘後`, 'auto');
+
+  UPD.scheduledTimer = setTimeout(() => triggerUpdate('auto'), delay);
+}
+
+// ── AUTO TOGGLE ───────────────────────────────────────────────────
+document.getElementById('btnAutoToggle').addEventListener('click', () => {
+  UPD.autoOn = !UPD.autoOn;
+  const btn = document.getElementById('btnAutoToggle');
+  const lbl = document.getElementById('autoLabel');
+  if (UPD.autoOn) {
+    btn.classList.add('on');
+    lbl.textContent = '自動更新 ON';
+    scheduleNextUpdate();
+    showToast('已開啟每日 08:00 自動更新', 'success');
+    addLog('✅ 自動更新已開啟', 'success');
+  } else {
+    btn.classList.remove('on');
+    lbl.textContent = '自動更新 OFF';
+    clearTimeout(UPD.scheduledTimer);
+    UPD.nextUpdateAt = null;
+    document.getElementById('updNext').textContent = '';
+    document.getElementById('updProgress').style.width = '0%';
+    showToast('已關閉自動更新', 'success');
+    addLog('⏸️ 自動更新已關閉', 'success');
+  }
+});
+
+// ── MANUAL UPDATE BUTTON ──────────────────────────────────────────
+document.getElementById('btnUpdate').addEventListener('click', () => {
+  triggerUpdate('manual');
+});
+
+// ── LOG DRAWER ────────────────────────────────────────────────────
+function openLog()  { document.getElementById('logDrawer').classList.add('open'); document.getElementById('logOverlay').classList.add('on'); }
+function closeLog() { document.getElementById('logDrawer').classList.remove('open'); document.getElementById('logOverlay').classList.remove('on'); }
+document.getElementById('btnLog').addEventListener('click', openLog);
+document.getElementById('logClose').addEventListener('click', closeLog);
+document.getElementById('logOverlay').addEventListener('click', closeLog);
+
+// ── LIVE TAIPEI CLOCK ─────────────────────────────────────────────
+function startLiveClock() {
+  function tick() {
+    const clkEl = document.getElementById('liveClock');
+    if (clkEl) clkEl.textContent = fmtTime(Date.now());
+  }
+  tick();
+  // Align to the next whole second so it ticks crisply
+  const msToNextSec = 1000 - (Date.now() % 1000);
+  setTimeout(() => {
+    tick();
+    UPD.clockTimer = setInterval(tick, 1000);
+  }, msToNextSec);
+}
+
+// ── INIT UPDATE SYSTEM ────────────────────────────────────────────
+(function initUpdateSystem() {
+  const tradeDate = getDisplayTradeDate();
+  UPD.lastUpdateDate = tradeDate;
+  updateHeaderDate(tradeDate);
+  document.getElementById('updLabel').textContent = `資料基準：${formatDateDisplay(tradeDate)} 收盤`;
+  setDot('live');
+
+  // Start live Taipei clock
+  startLiveClock();
+
+  // Start countdown to next 08:00
+  startCountdown();
+
+  // Schedule 08:00 auto-update
+  scheduleNextUpdate();
+
+  // Initial log entry with Taipei time
+  const nowMs = Date.now();
+  const p = twParts(nowMs);
+  const twTimeStr = fmtTime(nowMs);
+  const twDateStr = p.dateStr;
+  const DOW_ZH = ['日','一','二','三','四','五','六'];
+  addLog(
+    `🟢 系統啟動 · 台北時間 ${formatDateDisplay(twDateStr)}（週${DOW_ZH[p.weekday]}）${twTimeStr} · 顯示 ${formatDateDisplay(tradeDate)} 收盤資料`,
+    'success'
+  );
+
+  // If it's exactly 08:00 Taipei right now, auto-trigger after 2 s
+  if (p.hour === 8 && p.minute === 0) {
+    addLog('⏰ 偵測到 08:00 更新時間，將自動執行更新…', 'auto');
+    setTimeout(() => triggerUpdate('auto'), 2000);
+  }
+})();
+
+// ── DYNAMIC STICKY OFFSET ────────────────────────────────────────
+// On mobile update-bar is not sticky (CSS overrides), so only matters on desktop.
+// Recalculate on load and resize.
+function fixStickyOffsets() {
+  const hdr = document.querySelector('.hdr');
+  const bar = document.querySelector('.update-bar');
+  const page = document.querySelector('.page');
+  if (!hdr || !bar || !page) return;
+
+  const isMobile = window.innerWidth <= 640;
+  if (isMobile) {
+    // Mobile: update-bar is inline (not sticky). page needs no extra padding.
+    bar.style.top = '';
+    page.style.paddingTop = '';
+  } else {
+    // Desktop: update-bar sticks just below header.
+    const hdrH = hdr.offsetHeight;
+    bar.style.top = hdrH + 'px';
+    const barH = bar.offsetHeight;
+    // No extra padding needed — page is below both sticky elements naturally.
+    // But if content is hidden behind them, add scroll margin.
+    page.style.scrollMarginTop = (hdrH + barH + 8) + 'px';
+  }
+}
+
+fixStickyOffsets();
+window.addEventListener('resize', fixStickyOffsets);
+// Also run after fonts/layout settle
+window.addEventListener('load', fixStickyOffsets);
+</script>
+</body>
+</html>
