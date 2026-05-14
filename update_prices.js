@@ -187,18 +187,24 @@ function patchScoreOne(html) {
   return html;
 }
 
-// ── 更新 base ────────────────────────────────────────────────────
+// ── 更新 base（逐行處理，正確支援中文欄位）──────────────────────
 function updateBases(prices, html) {
+  const lines = html.split('\n');
   let n = 0;
-  for (const [sym, price] of Object.entries(prices)) {
-    const esc   = sym.replace(/\./g, '\\.');
-    const re    = new RegExp(`(\\{code:'${esc}'[^}]*?base:)[\\d.]+`, 'g');
+  const result = lines.map(line => {
+    // 找出這行對應的 code
+    const m = line.match(/code:'([^']+)'/);
+    if (!m) return line;
+    const sym = m[1];
+    if (!(sym in prices)) return line;
+    const price = prices[sym];
     const dp    = price >= 1000 ? 0 : price >= 100 ? 1 : 2;
-    const next  = html.replace(re, `$1${price.toFixed(dp)}`);
-    if (next !== html) { html = next; n++; }
-  }
+    const newLine = line.replace(/base:\s*[\d.]+/, `base:${price.toFixed(dp)}`);
+    if (newLine !== line) n++;
+    return newLine;
+  });
   console.log(`✅ 更新 ${n} 檔收盤價`);
-  return html;
+  return result.join('\n');
 }
 
 // ── 主程式 ───────────────────────────────────────────────────────
