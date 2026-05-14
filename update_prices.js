@@ -265,7 +265,8 @@ function fetchPChome(codeNum) {
 
 async function scanMode() {
   console.log('='.repeat(56));
-  console.log(' PChome 代號掃描模式  |  驗證所有個股是否存在');
+  console.log(' PChome 代號掃描模式 v2  |  驗證所有個股是否存在');
+  console.log(' empty / 查無 / redirect / 404 → 全部移除');
   console.log('='.repeat(56));
 
   let html = fs.readFileSync(HTML_FILE, 'utf8');
