@@ -7,7 +7,8 @@
  *  3. 將真實指標寫入 REAL_INDICATORS，讓網頁直接使用
  *
  * 用法：
- *   node update_prices.js
+ *   node update_prices.js            ← 每日更新收盤價
+ *   node update_prices.js --scan     ← 掃描 PChome 驗證代號是否存在（移除不存在的）
  */
 
 import https from 'https';
@@ -207,8 +208,144 @@ function updateBases(prices, html) {
   return result.join('\n');
 }
 
+// ── PChome 掃描：驗證代號是否存在 ───────────────────────────────
+function fetchPChome(codeNum) {
+  return new Promise((resolve) => {
+    const url = `https://stock.pchome.com.tw/stock/sto0/ock2/sid${codeNum}.html`;
+    const opts = {
+      hostname: 'stock.pchome.com.tw',
+      path: `/stock/sto0/ock2/sid${codeNum}.html`,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml',
+        'Accept-Language': 'zh-TW,zh;q=0.9',
+        'Referer': 'https://stock.pchome.com.tw/',
+      }
+    };
+    const req = https.get(opts, (res) => {
+      // 307/302 redirect 通常代表不存在（跳回首頁）
+      if (res.statusCode >= 300 && res.statusCode < 400) {
+        const loc = res.headers['location'] || '';
+        resolve({ exists: false, name: null, reason: `redirect→${loc.slice(0,60)}` });
+        res.resume();
+        return;
+      }
+      if (res.statusCode !== 200) {
+        resolve({ exists: false, name: null, reason: `HTTP ${res.statusCode}` });
+        res.resume();
+        return;
+      }
+      let body = '';
+      res.on('data', c => { body += c; if (body.length > 50000) req.destroy(); });
+      res.on('end', () => {
+        const hasPrice = /成交價|收盤|即時報價|stockData|StockName/.test(body);
+        const noResult = /查無此股票|找不到|not found|此股票不存在/i.test(body);
+        if (noResult || !hasPrice) {
+          resolve({ exists: false, name: null, reason: noResult ? '查無' : '無股價元素' });
+          return;
+        }
+        const m = body.match(/<title>([^(（<]{2,20})[（(]/);
+        const name = m ? m[1].trim() : null;
+        resolve({ exists: true, name });
+      });
+    });
+    req.on('error', (e) => resolve({ exists: null, name: null, reason: e.message }));
+    req.setTimeout(10000, () => { req.destroy(); resolve({ exists: null, name: null, reason: 'timeout' }); });
+  });
+}
+
+async function scanMode() {
+  console.log('='.repeat(56));
+  console.log(' PChome 代號掃描模式  |  驗證所有個股是否存在');
+  console.log('='.repeat(56));
+
+  let html = fs.readFileSync(HTML_FILE, 'utf8');
+  const pool = html.slice(html.indexOf('const MARKET_POOL'), html.indexOf('// ── 確定性隨機引擎'));
+  const entries = [...pool.matchAll(/\{code:'([^']+)',name:'([^']+)'/g)]
+    .map(m => ({ code: m[1], name: m[2] }));
+
+  console.log(`\n📋 共 ${entries.length} 檔，開始掃描（每隔 400ms）...\n`);
+
+  const invalid = [];
+  const nameFixed = [];
+  const errors = [];
+
+  for (let i = 0; i < entries.length; i++) {
+    const { code, name } = entries[i];
+    const num = code.replace(/\.(TW|TWO)$/, '');
+    const result = await fetchPChome(num);
+
+    if (result.exists === false) {
+      invalid.push({ code, name, reason: result.reason });
+      process.stdout.write(`  ❌ ${code.padEnd(14)} ${name} (${result.reason})\n`);
+    } else if (result.exists === true) {
+      if (result.name && result.name !== name) {
+        nameFixed.push({ code, oldName: name, newName: result.name });
+        process.stdout.write(`  ✏️  ${code.padEnd(14)} ${name} → ${result.name}\n`);
+      } else {
+        process.stdout.write(`  ✅ ${code.padEnd(14)} ${name}\n`);
+      }
+    } else {
+      errors.push({ code, name, reason: result.reason });
+      process.stdout.write(`  ⚠️  ${code.padEnd(14)} ${name} (${result.reason})\n`);
+    }
+
+    if ((i + 1) % 50 === 0) console.log(`  ── 進度：${i+1}/${entries.length} ──`);
+    await new Promise(r => setTimeout(r, 400));
+  }
+
+  console.log(`\n${'='.repeat(56)}`);
+  console.log(`✅ 掃描完成`);
+  console.log(`❌ 不存在：${invalid.length} 個`);
+  console.log(`✏️  名稱不符：${nameFixed.length} 個`);
+  console.log(`⚠️  網路錯誤：${errors.length} 個（不處理）`);
+
+  if (invalid.length === 0 && nameFixed.length === 0) {
+    console.log('\n🎉 所有代號均有效，無需修改！');
+    return;
+  }
+
+  // 備份並更新 HTML
+  const bak = HTML_FILE.replace('.html', `_scan_bak_${Date.now()}.html`);
+  fs.copyFileSync(HTML_FILE, bak);
+
+  const lines = html.split('\n');
+  const removeSet = new Set(invalid.map(x => x.code));
+  const fixMap = Object.fromEntries(nameFixed.map(x => [x.code, x.newName]));
+  let removed = 0, fixed = 0;
+
+  const newLines = lines.map(line => {
+    const m = line.match(/code:'([^']+)'/);
+    if (!m) return line;
+    const code = m[1];
+    if (removeSet.has(code)) { removed++; return null; }
+    if (fixMap[code]) {
+      const nm = line.match(/name:'([^']+)'/);
+      if (nm) { fixed++; return line.replace(`name:'${nm[1]}'`, `name:'${fixMap[code]}'`); }
+    }
+    return line;
+  }).filter(l => l !== null);
+
+  fs.writeFileSync(HTML_FILE, newLines.join('\n'), 'utf8');
+  console.log(`\n📁 備份：${path.basename(bak)}`);
+  console.log(`✅ 已移除 ${removed} 個無效代號，修正 ${fixed} 個名稱`);
+
+  // 輸出移除清單
+  if (invalid.length > 0) {
+    console.log('\n移除清單：');
+    invalid.forEach(x => console.log(`  ${x.code}: ${x.name}`));
+  }
+}
+
 // ── 主程式 ───────────────────────────────────────────────────────
 (async () => {
+  // --scan 模式：驗證所有代號
+  if (process.argv.includes('--scan')) {
+    if (!fs.existsSync(HTML_FILE)) { console.error('❌ 找不到 ' + HTML_FILE); process.exit(1); }
+    await scanMode();
+    return;
+  }
+
   console.log('='.repeat(56));
   console.log(' 台股每日更新 v2  |  收盤價 + 真實技術指標');
   console.log('='.repeat(56));
