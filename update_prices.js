@@ -211,7 +211,6 @@ function updateBases(prices, html) {
 // ── PChome 掃描：驗證代號是否存在 ───────────────────────────────
 function fetchPChome(codeNum) {
   return new Promise((resolve) => {
-    const url = `https://stock.pchome.com.tw/stock/sto0/ock2/sid${codeNum}.html`;
     const opts = {
       hostname: 'stock.pchome.com.tw',
       path: `/stock/sto0/ock2/sid${codeNum}.html`,
@@ -223,21 +222,31 @@ function fetchPChome(codeNum) {
       }
     };
     const req = https.get(opts, (res) => {
-      // 307/302 redirect 通常代表不存在（跳回首頁）
+      // redirect → 不存在
       if (res.statusCode >= 300 && res.statusCode < 400) {
         const loc = res.headers['location'] || '';
         resolve({ exists: false, name: null, reason: `redirect→${loc.slice(0,60)}` });
         res.resume();
         return;
       }
+      if (res.statusCode === 404) {
+        resolve({ exists: false, name: null, reason: 'HTTP 404' });
+        res.resume();
+        return;
+      }
       if (res.statusCode !== 200) {
-        resolve({ exists: false, name: null, reason: `HTTP ${res.statusCode}` });
+        resolve({ exists: null, name: null, reason: `HTTP ${res.statusCode}` });
         res.resume();
         return;
       }
       let body = '';
-      res.on('data', c => { body += c; if (body.length > 50000) req.destroy(); });
+      res.on('data', c => { body += c; if (body.length > 80000) req.destroy(); });
       res.on('end', () => {
+        if (body.length < 1000) {
+          // 回應太短 = 空頁面 = 不存在
+          resolve({ exists: false, name: null, reason: 'empty' });
+          return;
+        }
         const hasPrice = /成交價|收盤|即時報價|stockData|StockName/.test(body);
         const noResult = /查無此股票|找不到|not found|此股票不存在/i.test(body);
         if (noResult || !hasPrice) {
