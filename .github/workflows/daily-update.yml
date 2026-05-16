@@ -3,7 +3,7 @@ name: 每日台股更新
 on:
   schedule:
     # 台北時間 16:00 = UTC 08:00（台灣無夏令時間）
-    - cron: '0 8 * * 1-5'   # 週一到週五
+    - cron: '0 7 * * 1-5'   # 週一到週五
   workflow_dispatch:          # 也可手動觸發
 
 jobs:
